@@ -5,7 +5,8 @@
 - Middle click closes files
 - Option to pin open files; pinned files will re-open on page refresh (use local storage; do consider cookies though - will help with SSR)
 - "Home" will remain pinned by default; unpin will be disabled
-- right click context menu on file titles -> close, pin
+- Right click context menu on file titles -> close, pin
+- Tooltip at bottom right will have a link to "contact" file (check screenshot)
 
 ----
 
