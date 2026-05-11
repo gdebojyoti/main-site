@@ -15,6 +15,25 @@
   - maintain a counter; when it exceeds 10 (for example), show this one word at a time: "YOU NEED TO STOP DOING THIS"
   - on page refresh, all counters get reset (i.e., no data persistence)
   - Ctrl + ~ should toggle the terminal
+- "Files"
+  - Home (tsx)
+    - https://web.archive.org/web/20240319211617/https://debojyotighosh.com/
+  - Resume (md)
+  - Contact (css)
+    - social links (email, li, github)
+    - location (city, state, country)
+  - Package (json)
+    - name, version, description
+    - scripts - hobbies (lego, video games)
+    - dependencies - stack used to create this repo
+- Folder structure
+  - app
+    - routes
+      - home.tsx
+    - styles
+      - contact.css
+  - package.json
+  - RESUME.md
 
 ----
 
