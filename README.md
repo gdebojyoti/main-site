@@ -1,3 +1,14 @@
+## Requirements
+
+- VS Code look-alike
+- Themes
+- Middle click closes files
+- Option to pin open files; pinned files will re-open on page refresh (use local storage; do consider cookies though - will help with SSR)
+- "Home" will remain pinned by default; unpin will be disabled
+- right click context menu on file titles -> close, pin
+
+----
+
 # Welcome to React Router!
 
 A modern, production-ready template for building full-stack React applications using React Router.
