@@ -1,13 +1,13 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import VSC from "~/vsc";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Debojyoti Ghosh | UI / UX Developer & Front-end Engineer" },
+    { name: "description", content: "UI / UX Developer & Front-end Engineer" },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return <VSC />;
 }
