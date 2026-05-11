@@ -7,6 +7,14 @@
 - "Home" will remain pinned by default; unpin will be disabled
 - Right click context menu on file titles -> close, pin
 - Tooltip at bottom right will have a link to "contact" file (check screenshot)
+- Terminal
+  - most commands will return a "currently disabled" error
+  - some commands will have pre-defined results
+    - whoami => ~i am spiderman~ (strikethrough) currently disabled
+      - this will be shown only once
+  - maintain a counter; when it exceeds 10 (for example), show this one word at a time: "YOU NEED TO STOP DOING THIS"
+  - on page refresh, all counters get reset (i.e., no data persistence)
+  - Ctrl + ~ should toggle the terminal
 
 ----
 
