@@ -3,8 +3,7 @@ import Terminal from "./Terminal";
 
 const MainContent = () => {
   return (
-    <main>
-      Main Content
+    <main className="flex flex-col">
       {/* editor panel */}
       <EditorPanel />
 
