@@ -1,43 +1,27 @@
+import ActivityBar from "./ActivityBar";
+import ActivityPanel from "./ActivityPanel";
+import BottomBar from "./BottomBar";
+import MainContent from "./mainContent/MainContent";
+
 const VSC = () => {
   return (
-    <div>
+    <div className="flex flex-col h-full">
       {/* title bar - SKIP for now */}
-      
+
       {/* container */}
-      <div>
+      <div className="flex grow">
         {/* activity bar */}
+        <ActivityBar />
 
         {/* activity panel */}
-        <nav>
-          {/* title */}
-
-          {/* open editors list */}
-
-          {/* file / folder structure */}
-        </nav>
+        <ActivityPanel />
 
         {/* main content */}
-        <main>
-          {/* editor panel */}
-          <div>
-            {/* editor panel header */}
-            <div></div>
-
-            {/* editor file container */}
-            <div>
-              {/* breadcrumb */}
-
-              {/* editor file contents */}
-            </div>
-          </div>
-
-          {/* terminal */}
-          <div></div>
-        </main>
+        <MainContent />
       </div>
 
       {/* bottom bar - branch, error / warning, UTF, CRLF, language, etc*/}
-      <div></div>
+      <BottomBar />
     </div>
   );
 };
