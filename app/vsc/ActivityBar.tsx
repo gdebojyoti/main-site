@@ -1,6 +1,6 @@
 const ActivityBar = () => {
   return (
-    <div className="w-12 bg-amber-950">
+    <div className="w-12 bg-primary">
       {/* Activity Bar */}
     </div>
   )
