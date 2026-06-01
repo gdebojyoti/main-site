@@ -3,6 +3,13 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-background: var(--background);
+  --color-text: var(--text);
 }
 
 html,
@@ -12,4 +19,34 @@ body {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+}
+
+/* Default (Light) Theme Variables */
+:root {
+  --background: #f8fafc;
+  --text: #0f172a;
+  --primary: #2563eb; 
+  --primary-foreground: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+}
+
+/* Dark Theme Variables */
+.dark {
+  --background: #0f172a;
+  --text: #f8fafc;
+  --primary: #3b82f6; 
+  --primary-foreground: #ffffff;
+  --card: #1e293b; 
+  --card-foreground: #f8fafc;
+}
+
+/* Cyberpunk Theme Variables */
+.cyberpunk {
+  --background: #fdf001; /* Cyberpunk Yellow */
+  --text: #050a0e;
+  --primary: #ff003c; /* Neon Pink/Red */
+  --primary-foreground: #ffffff;
+  --card: #00e6f6; /* Neon Blue */
+  --card-foreground: #050a0e;
 }
