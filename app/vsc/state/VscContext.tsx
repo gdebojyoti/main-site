@@ -1,18 +1,17 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { FILES, HOME_FILE_ID, type FileId } from "../files";
 import { writePinnedCookie } from "../lib/cookies";
 
 type VscState = {
   openIds: FileId[];
   pinnedIds: FileId[];
-  activeId: FileId;
 };
 
 type VscContextValue = VscState & {
+  activeId: FileId;
   openFile: (id: FileId) => void;
   closeFile: (id: FileId) => void;
   togglePin: (id: FileId) => void;
-  setActive: (id: FileId) => void;
 };
 
 const VscContext = createContext<VscContextValue | null>(null);
@@ -26,40 +25,52 @@ function normalizePinned(ids: FileId[]): FileId[] {
 
 export const VscProvider = ({
   initialPinned,
+  activeId,
+  onNavigate,
   children,
 }: {
   initialPinned: FileId[];
+  activeId: FileId;
+  onNavigate: (id: FileId, options?: { replace?: boolean }) => void;
   children: ReactNode;
 }) => {
   const [state, setState] = useState<VscState>(() => {
     const pinned = normalizePinned(initialPinned);
-    return { openIds: pinned, pinnedIds: pinned, activeId: HOME_FILE_ID };
+    return { openIds: pinned, pinnedIds: pinned };
   });
 
-  const openFile = useCallback((id: FileId) => {
-    setState((s) => ({
-      ...s,
-      openIds: s.openIds.includes(id) ? s.openIds : [...s.openIds, id],
-      activeId: id,
-    }));
-  }, []);
+  // Visiting a file's route (a click, a direct URL, back/forward) always
+  // opens that file's tab, unless it's already open (e.g. already pinned).
+  useEffect(() => {
+    setState((s) => (s.openIds.includes(activeId) ? s : { ...s, openIds: [...s.openIds, activeId] }));
+  }, [activeId]);
 
-  const closeFile = useCallback((id: FileId) => {
-    if (id === HOME_FILE_ID) return;
-    setState((s) => {
-      const openIds = s.openIds.filter((x) => x !== id);
-      const pinnedIds = s.pinnedIds.filter((x) => x !== id);
-      if (pinnedIds.length !== s.pinnedIds.length) writePinnedCookie(pinnedIds);
+  const openFile = useCallback(
+    (id: FileId) => {
+      onNavigate(id);
+    },
+    [onNavigate],
+  );
 
-      let activeId = s.activeId;
-      if (activeId === id) {
-        const closedIndex = s.openIds.indexOf(id);
-        activeId = openIds[closedIndex - 1] ?? openIds[0] ?? HOME_FILE_ID;
-      }
+  const closeFile = useCallback(
+    (id: FileId) => {
+      if (id === HOME_FILE_ID) return;
+      setState((s) => {
+        const openIds = s.openIds.filter((x) => x !== id);
+        const pinnedIds = s.pinnedIds.filter((x) => x !== id);
+        if (pinnedIds.length !== s.pinnedIds.length) writePinnedCookie(pinnedIds);
 
-      return { openIds, pinnedIds, activeId };
-    });
-  }, []);
+        if (id === activeId) {
+          const closedIndex = s.openIds.indexOf(id);
+          const fallback = openIds[closedIndex - 1] ?? openIds[0] ?? HOME_FILE_ID;
+          onNavigate(fallback, { replace: true });
+        }
+
+        return { openIds, pinnedIds };
+      });
+    },
+    [activeId, onNavigate],
+  );
 
   const togglePin = useCallback((id: FileId) => {
     if (id === HOME_FILE_ID) return;
@@ -72,17 +83,9 @@ export const VscProvider = ({
     });
   }, []);
 
-  const setActive = useCallback((id: FileId) => {
-    setState((s) => ({
-      ...s,
-      activeId: id,
-      openIds: s.openIds.includes(id) ? s.openIds : [...s.openIds, id],
-    }));
-  }, []);
-
   const value = useMemo<VscContextValue>(
-    () => ({ ...state, openFile, closeFile, togglePin, setActive }),
-    [state, openFile, closeFile, togglePin, setActive],
+    () => ({ ...state, activeId, openFile, closeFile, togglePin }),
+    [state, activeId, openFile, closeFile, togglePin],
   );
 
   return <VscContext.Provider value={value}>{children}</VscContext.Provider>;

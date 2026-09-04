@@ -10,8 +10,15 @@ const SECTION_HEADING_CLASS =
   "flex items-center gap-1 px-2 py-1 text-[11px] font-bold uppercase tracking-wide text-side-bar-heading-foreground";
 
 const SideBar = () => {
-  const { openIds, pinnedIds, activeId, openFile, closeFile, togglePin, setActive } = useVsc();
+  const { openIds, pinnedIds, activeId, openFile, closeFile, togglePin } = useVsc();
   const { showContextMenu } = useContextMenu();
+
+  // Middle-click closes a tab, but the browser only follows through on a
+  // clean click (no drag) if we cancel the default auto-scroll grab on
+  // mousedown — otherwise it silently swallows the click.
+  const handleMouseDown = (event: MouseEvent) => {
+    if (event.button === 1) event.preventDefault();
+  };
 
   const handleAuxClick = (event: MouseEvent, id: FileId) => {
     if (event.button === 1) {
@@ -48,7 +55,8 @@ const SideBar = () => {
             return (
               <li
                 key={id}
-                onClick={() => setActive(id)}
+                onClick={() => openFile(id)}
+                onMouseDown={handleMouseDown}
                 onAuxClick={(event) => handleAuxClick(event, id)}
                 onContextMenu={(event) => handleContextMenu(event, id)}
                 className={`flex items-center gap-2 py-0.75 pl-8 pr-2 cursor-pointer ${

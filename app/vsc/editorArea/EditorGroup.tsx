@@ -18,12 +18,19 @@ const FILE_CONTENT = {
 };
 
 const EditorGroup = () => {
-  const { openIds, pinnedIds, activeId, closeFile, togglePin, setActive } = useVsc();
+  const { openIds, pinnedIds, activeId, closeFile, togglePin, openFile } = useVsc();
   const { showContextMenu } = useContextMenu();
 
   const activeFile = FILES_BY_ID[activeId];
   const ActiveContent = FILE_CONTENT[activeFile.id];
   const breadcrumbSegments = activeFile.path.split("/");
+
+  // Middle-click closes a tab, but the browser only follows through on a
+  // clean click (no drag) if we cancel the default auto-scroll grab on
+  // mousedown — otherwise it silently swallows the click.
+  const handleMouseDown = (event: MouseEvent) => {
+    if (event.button === 1) event.preventDefault();
+  };
 
   const handleAuxClick = (event: MouseEvent, id: FileId) => {
     if (event.button === 1) {
@@ -47,7 +54,8 @@ const EditorGroup = () => {
           return (
             <li
               key={id}
-              onClick={() => setActive(id)}
+              onClick={() => openFile(id)}
+              onMouseDown={handleMouseDown}
               onAuxClick={(event) => handleAuxClick(event, id)}
               onContextMenu={(event) => handleContextMenu(event, id)}
               className={`flex cursor-pointer items-center gap-2 px-3 py-1.5 text-sm ${
@@ -60,7 +68,9 @@ const EditorGroup = () => {
               <span>{file.label}</span>
               {isPinned ? (
                 <Pin
-                  className="h-3 w-3 shrink-0 text-muted-foreground"
+                  className={`h-3 w-3 shrink-0 text-muted-foreground ${
+                    id === HOME_FILE_ID ? "cursor-default" : "cursor-pointer"
+                  }`}
                   onClick={(event) => {
                     event.stopPropagation();
                     togglePin(id);
@@ -68,10 +78,10 @@ const EditorGroup = () => {
                 />
               ) : (
                 <X
-                  className="h-3 w-3 shrink-0 text-muted-foreground"
+                  className="h-3 w-3 shrink-0 cursor-pointer text-muted-foreground"
                   onClick={(event) => {
                     event.stopPropagation();
-                    if (id !== HOME_FILE_ID) closeFile(id);
+                    closeFile(id);
                   }}
                 />
               )}

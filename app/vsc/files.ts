@@ -19,3 +19,12 @@ export const FILES_BY_ID: Record<FileId, FileMeta> = Object.fromEntries(
 ) as Record<FileId, FileMeta>;
 
 export const HOME_FILE_ID: FileId = "home";
+
+// URL each file is addressable at. Clicking a file navigates here (adding a
+// history entry); loading one of these routes directly opens that file too.
+export const FILE_ROUTES: Record<FileId, string> = {
+  home: "/",
+  contact: "/contact",
+  package: "/about",
+  resume: "/resume",
+};

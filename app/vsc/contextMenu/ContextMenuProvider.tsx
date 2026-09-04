@@ -69,7 +69,7 @@ export const ContextMenuProvider = ({ children }: { children: ReactNode }) => {
                   item.onSelect();
                   closeMenu();
                 }}
-                className="flex w-full px-3 py-1 text-left disabled:cursor-not-allowed disabled:opacity-40 enabled:hover:bg-list-hover"
+                className="flex w-full cursor-pointer px-3 py-1 text-left disabled:cursor-not-allowed disabled:opacity-40 enabled:hover:bg-list-hover"
               >
                 {item.label}
               </button>
