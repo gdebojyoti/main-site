@@ -3,7 +3,7 @@ const PackageFile = () => {
     <pre className="px-8 py-6 font-mono text-sm leading-relaxed text-editor-foreground">
       <code>{`{
   "name": "debojyoti-ghosh",
-  "version": "1.0.0",
+  "version": "26.9.4",
   "description": "UI / UX Developer & Front-end Engineer",
   "scripts": {
     "hobbies": "lego && video-games"

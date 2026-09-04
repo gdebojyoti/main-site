@@ -1,14 +1,14 @@
 const ContactFile = () => {
   return (
     <pre className="px-8 py-6 font-mono text-sm leading-relaxed text-editor-foreground">
-      <code>{`.contact {
-  --email: "you@example.com";
-  --linkedin: "linkedin.com/in/username";
-  --github: "github.com/username";
+      <code>{`.contact-details {
+  --email: "contact[at]debojyotighosh[dot].com";
+  --linkedin: "https://www.linkedin.com/in/gdebojyoti/";
+  --github: "https://github.com/gdebojyoti/";
 
-  --city: "City";
-  --state: "State";
-  --country: "Country";
+  --city: "Durgapur";
+  --state: "West Bengal";
+  --country: "India";
 }`}</code>
     </pre>
   );
