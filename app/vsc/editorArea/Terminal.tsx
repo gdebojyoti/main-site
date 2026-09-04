@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 
-const PROMPT = "PS D:\\Work\\main-site>";
+const PROMPT = "D:\\work\\tcs\\3dp\\reai\\za>";
 
-const BOOT_TEXT = `> dev
-> react-router dev
+// const BOOT_TEXT = `> dev
+// > react-router dev
 
-  \u2794  Local:   http://localhost:5173/
-  \u2794  Network: use --host to expose
-  \u2794  press h + enter to show help
-`;
+//   \u2794  Local:   http://localhost:5173/
+//   \u2794  Network: use --host to expose
+//   \u2794  press h + enter to show help
+// `;
 
 type HistoryEntry = {
   command: string;
@@ -64,7 +64,7 @@ const Terminal = () => {
       onClick={() => inputRef.current?.focus()}
       className="min-h-0 flex-1 cursor-text overflow-y-auto px-3 py-2 font-mono text-xs leading-relaxed text-editor-foreground"
     >
-      <pre className="whitespace-pre-wrap">{BOOT_TEXT}</pre>
+      {/* <pre className="whitespace-pre-wrap">{BOOT_TEXT}</pre> */}
 
       {history.map((entry, index) => (
         <div key={index}>
