@@ -112,21 +112,21 @@ body {
 .dark {
   --background: #1f1f1f;
   --foreground: #cccccc;
-  --border: #3c3c3c;
+  --border: #2A2B2C;
   --accent: #0078d4;
   --muted-foreground: #9d9d9d;
-  --canvas-bg: #101010;
+  --canvas-bg: #191A1B;
 
-  --activity-bar-bg: #181818;
+  --activity-bar-bg: #191A1B;
   --activity-bar-fg: #d7d7d7;
   --activity-bar-inactive-fg: #6f6f6f;
   --activity-bar-active-border: #0078d4;
 
-  --side-bar-bg: #1e1e1e;
+  --side-bar-bg: #191A1B;
   --side-bar-fg: #cccccc;
   --side-bar-heading-fg: #cccccc;
 
-  --editor-bg: #181818;
+  --editor-bg: #121314;
   --editor-fg: #cccccc;
 
   --tab-active-bg: #2d2d2d;
@@ -135,7 +135,7 @@ body {
   --tab-inactive-fg: #9d9d9d;
   --tab-border: #2b2b2b;
 
-  --panel-bg: #1e1e1e;
+  --panel-bg: #191A1B;
   --panel-border: #2b2b2b;
   --panel-tab-active-fg: #ffffff;
   --panel-tab-inactive-fg: #9d9d9d;

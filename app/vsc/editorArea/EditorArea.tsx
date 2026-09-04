@@ -17,7 +17,7 @@ const EditorArea = () => {
   }, []);
 
   return (
-    <main className="flex min-h-0 min-w-0 flex-1 flex-col gap-2">
+    <main className="flex min-h-0 min-w-0 flex-1 flex-col gap-1">
       <EditorGroup />
       {panelOpen && <Panel onClose={() => setPanelOpen(false)} />}
     </main>
