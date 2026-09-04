@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import { parsePinnedCookie } from "~/vsc/lib/cookies";
 import VSC from "~/vsc";
 
 export function meta({}: Route.MetaArgs) {
@@ -8,6 +9,10 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <VSC />;
+export function loader({ request }: Route.LoaderArgs) {
+  return { pinned: parsePinnedCookie(request.headers.get("Cookie")) };
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
+  return <VSC initialPinned={loaderData.pinned} />;
 }

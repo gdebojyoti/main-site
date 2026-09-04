@@ -5,14 +5,17 @@ export type FileMeta = {
   label: string;
   path: string;
   type: "tsx" | "md" | "css" | "json";
-  pinned: boolean;
 };
 
 export const FILES: FileMeta[] = [
-  { id: "home", label: "home.tsx", path: "main-site/app/routes/home.tsx", type: "tsx", pinned: true },
-  { id: "resume", label: "RESUME.md", path: "main-site/RESUME.md", type: "md", pinned: false },
-  { id: "contact", label: "contact.css", path: "main-site/app/styles/contact.css", type: "css", pinned: false },
-  { id: "package", label: "package.json", path: "main-site/package.json", type: "json", pinned: false },
+  { id: "home", label: "home.tsx", path: "main-site/app/routes/home.tsx", type: "tsx" },
+  { id: "resume", label: "RESUME.md", path: "main-site/RESUME.md", type: "md" },
+  { id: "contact", label: "contact.css", path: "main-site/app/styles/contact.css", type: "css" },
+  { id: "package", label: "package.json", path: "main-site/package.json", type: "json" },
 ];
 
-export const ACTIVE_FILE_ID: FileId = "home";
+export const FILES_BY_ID: Record<FileId, FileMeta> = Object.fromEntries(
+  FILES.map((file) => [file.id, file]),
+) as Record<FileId, FileMeta>;
+
+export const HOME_FILE_ID: FileId = "home";
