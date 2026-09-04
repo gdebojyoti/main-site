@@ -3,7 +3,7 @@ import type { Route } from "./+types/about";
 export const handle = { fileId: "package" } as const;
 
 export function meta({}: Route.MetaArgs) {
-  return [{ title: "package.json | Debojyoti Ghosh" }];
+  return [{ title: "About | Debojyoti Ghosh" }];
 }
 
 export default function AboutRoute() {
