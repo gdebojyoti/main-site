@@ -26,7 +26,7 @@ const HomeFile = () => {
       <p className="mt-6 leading-relaxed text-editor-foreground">
         My recent works include:
         <br />
-        <a href="https://css-park.debojyotighosh.com/" className={LINK_HIGHLIGHT_CLASS}>
+        <a href="https://css-park.debojyotighosh.com/" className={LINK_HIGHLIGHT_CLASS} target="_blank">
           Amusement Park (a pure CSS project; with no images)
         </a>
         {/* Project Tiles (a web based game; in progress) */}
