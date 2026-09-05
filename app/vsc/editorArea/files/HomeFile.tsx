@@ -4,11 +4,11 @@ const LINK_HIGHLIGHT_CLASS =
 
 const HomeFile = () => {
   return (
-    <div className="max-w-3xl p-8 text-editor-foreground">
+    <div className="max-w-3xl px-8 py-12 text-editor-foreground">
       {/* <h1 className="text-2xl font-semibold text-editor-foreground">Debojyoti Ghosh</h1>
       <p className="mt-1 text-muted-foreground">UI / UX Developer &amp; Front-end Engineer</p> */}
 
-      <p className="mt-6 leading-relaxed text-editor-foreground">
+      <p className="leading-relaxed text-editor-foreground">
         Hi there, I am <strong className={HIGHLIGHT_CLASS}>Debojyoti Ghosh</strong>.
       </p>
 
