@@ -1,4 +1,4 @@
-import { ChevronDown, Folder, Pin } from "lucide-react";
+import { ChevronDown, Pin } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useContextMenu } from "./contextMenu/ContextMenuProvider";
 import { buildFileMenuItems } from "./contextMenu/fileMenuItems";
@@ -81,12 +81,10 @@ const SideBar = () => {
         <ul>
           <li className="flex items-center gap-2 py-0.75 pl-8 pr-2 hover:bg-list-hover">
             <ChevronDown className="h-3 w-3 shrink-0 text-muted-foreground" />
-            <Folder className="h-3.5 w-3.5 shrink-0 text-accent" />
             <span>app</span>
           </li>
           <li className="flex items-center gap-2 py-0.75 pl-14 pr-2 hover:bg-list-hover">
             <ChevronDown className="h-3 w-3 shrink-0 text-muted-foreground" />
-            <Folder className="h-3.5 w-3.5 shrink-0 text-accent" />
             <span>routes</span>
           </li>
           <li
@@ -99,7 +97,6 @@ const SideBar = () => {
           </li>
           <li className="flex items-center gap-2 py-0.75 pl-14 pr-2 hover:bg-list-hover">
             <ChevronDown className="h-3 w-3 shrink-0 text-muted-foreground" />
-            <Folder className="h-3.5 w-3.5 shrink-0 text-accent" />
             <span>styles</span>
           </li>
           <li
