@@ -1,6 +1,6 @@
 const HomeFile = () => {
   return (
-    <div className="mx-auto max-w-2xl px-8 py-12">
+    <div className="p-8 text-editor-foreground">
       <h1 className="text-2xl font-semibold text-editor-foreground">Debojyoti Ghosh</h1>
       <p className="mt-1 text-muted-foreground">UI / UX Developer &amp; Front-end Engineer</p>
 
