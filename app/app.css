@@ -3,50 +3,207 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Consolas", ui-monospace, "SFMono-Regular", Menlo, Monaco,
+    "Liberation Mono", "Courier New", monospace;
 
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  /* generic */
   --color-background: var(--background);
-  --color-text: var(--text);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-canvas: var(--canvas-bg);
+
+  /* activity bar */
+  --color-activity-bar: var(--activity-bar-bg);
+  --color-activity-bar-foreground: var(--activity-bar-fg);
+  --color-activity-bar-inactive-foreground: var(--activity-bar-inactive-fg);
+  --color-activity-bar-active-border: var(--activity-bar-active-border);
+
+  /* side bar */
+  --color-side-bar: var(--side-bar-bg);
+  --color-side-bar-foreground: var(--side-bar-fg);
+  --color-side-bar-heading-foreground: var(--side-bar-heading-fg);
+
+  /* editor */
+  --color-editor: var(--editor-bg);
+  --color-editor-foreground: var(--editor-fg);
+
+  /* highlighted "badge" text within file content (HomeFile, etc) */
+  --color-editor-highlight: var(--editor-highlight-bg);
+  --color-editor-highlight-foreground: var(--editor-highlight-fg);
+
+  /* tabs */
+  --color-tab-active: var(--tab-active-bg);
+  --color-tab-inactive: var(--tab-inactive-bg);
+  --color-tab-active-foreground: var(--tab-active-fg);
+  --color-tab-inactive-foreground: var(--tab-inactive-fg);
+  --color-tab-border: var(--tab-border);
+
+  /* panel (terminal / problems / output area) */
+  --color-panel: var(--panel-bg);
+  --color-panel-border: var(--panel-border);
+  --color-panel-tab-active-foreground: var(--panel-tab-active-fg);
+  --color-panel-tab-inactive-foreground: var(--panel-tab-inactive-fg);
+
+  /* status bar */
+  --color-status-bar: var(--status-bar-bg);
+  --color-status-bar-foreground: var(--status-bar-fg);
+
+  /* lists (explorer rows, open editors, etc) */
+  --color-list-hover: var(--list-hover-bg);
+  --color-list-active: var(--list-active-bg);
+  --color-list-active-foreground: var(--list-active-fg);
+
+  /* file-type accent colors */
+  --color-file-tsx: var(--file-tsx);
+  --color-file-md: var(--file-md);
+  --color-file-css: var(--file-css);
+  --color-file-json: var(--file-json);
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+  @apply bg-background text-foreground;
 }
 
-/* Default (Light) Theme Variables */
+/* ---- Light theme (placeholder, not the focus yet) ---- */
 :root {
   --background: #f8fafc;
-  --text: #0f172a;
-  --primary: #2563eb; 
-  --primary-foreground: #ffffff;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
+  --foreground: #0f172a;
+  --border: #e2e8f0;
+  --accent: #2563eb;
+  --muted-foreground: #64748b;
+  --canvas-bg: #e5e5e5;
+
+  --activity-bar-bg: #2c2c2c;
+  --activity-bar-fg: #ffffff;
+  --activity-bar-inactive-fg: #ffffff99;
+  --activity-bar-active-border: #2563eb;
+
+  --side-bar-bg: #f3f3f3;
+  --side-bar-fg: #0f172a;
+  --side-bar-heading-fg: #6b6b6b;
+
+  --editor-bg: #ffffff;
+  --editor-fg: #0f172a;
+  --editor-highlight-bg: #1f2937;
+  --editor-highlight-fg: #ffffff;
+
+  --tab-active-bg: #ffffff;
+  --tab-inactive-bg: #ececec;
+  --tab-active-fg: #0f172a;
+  --tab-inactive-fg: #6b6b6b;
+  --tab-border: #e2e8f0;
+
+  --panel-bg: #f8f8f8;
+  --panel-border: #e2e8f0;
+  --panel-tab-active-fg: #0f172a;
+  --panel-tab-inactive-fg: #6b6b6b;
+
+  --status-bar-bg: #2563eb;
+  --status-bar-fg: #ffffff;
+
+  --list-hover-bg: #e8e8e8;
+  --list-active-bg: #d6e4ff;
+  --list-active-fg: #0f172a;
+
+  --file-tsx: #3178c6;
+  --file-md: #6b93bf;
+  --file-css: #1572b6;
+  --file-json: #a68a1c;
 }
 
-/* Dark Theme Variables */
+/* ---- Dark theme (VS Code "Dark Modern" look-alike) — primary/default theme ---- */
 .dark {
-  --background: #0f172a;
-  --text: #f8fafc;
-  --primary: #3b82f6; 
-  --primary-foreground: #ffffff;
-  --card: #1e293b; 
-  --card-foreground: #f8fafc;
+  --background: #1f1f1f;
+  --foreground: #cccccc;
+  --border: #2A2B2C;
+  --accent: #0078d4;
+  --muted-foreground: #9d9d9d;
+  --canvas-bg: #191A1B;
+
+  --activity-bar-bg: #191A1B;
+  --activity-bar-fg: #d7d7d7;
+  --activity-bar-inactive-fg: #6f6f6f;
+  --activity-bar-active-border: #0078d4;
+
+  --side-bar-bg: #191A1B;
+  --side-bar-fg: #cccccc;
+  --side-bar-heading-fg: #cccccc;
+
+  --editor-bg: #121314;
+  --editor-fg: #cccccc;
+  --editor-highlight-bg: #333333;
+  --editor-highlight-fg: #ffffff;
+
+  --tab-active-bg: #2d2d2d;
+  --tab-inactive-bg: #181818;
+  --tab-active-fg: #ffffff;
+  --tab-inactive-fg: #9d9d9d;
+  --tab-border: #2b2b2b;
+
+  --panel-bg: #191A1B;
+  --panel-border: #2b2b2b;
+  --panel-tab-active-fg: #ffffff;
+  --panel-tab-inactive-fg: #9d9d9d;
+
+  --status-bar-bg: #181818;
+  --status-bar-fg: #cccccc;
+
+  --list-hover-bg: #2a2d2e;
+  --list-active-bg: #37373d;
+  --list-active-fg: #ffffff;
+
+  --file-tsx: #3178c6;
+  --file-md: #6b93bf;
+  --file-css: #1572b6;
+  --file-json: #cbcb41;
 }
 
-/* Cyberpunk Theme Variables */
+/* ---- Cyberpunk theme (placeholder — revisit once the base site is done) ---- */
 .cyberpunk {
-  --background: #fdf001; /* Cyberpunk Yellow */
-  --text: #050a0e;
-  --primary: #ff003c; /* Neon Pink/Red */
-  --primary-foreground: #ffffff;
-  --card: #00e6f6; /* Neon Blue */
-  --card-foreground: #050a0e;
+  --background: #fdf001;
+  --foreground: #050a0e;
+  --border: #050a0e;
+  --accent: #ff003c;
+  --muted-foreground: #050a0e99;
+  --canvas-bg: #050a0e;
+
+  --activity-bar-bg: #ff003c;
+  --activity-bar-fg: #ffffff;
+  --activity-bar-inactive-fg: #ffffff99;
+  --activity-bar-active-border: #00e6f6;
+
+  --side-bar-bg: #00e6f6;
+  --side-bar-fg: #050a0e;
+  --side-bar-heading-fg: #050a0e;
+
+  --editor-bg: #fdf001;
+  --editor-fg: #050a0e;
+  --editor-highlight-bg: #050a0e;
+  --editor-highlight-fg: #ffffff;
+
+  --tab-active-bg: #fdf001;
+  --tab-inactive-bg: #00e6f6;
+  --tab-active-fg: #050a0e;
+  --tab-inactive-fg: #050a0e;
+  --tab-border: #050a0e;
+
+  --panel-bg: #00e6f6;
+  --panel-border: #050a0e;
+  --panel-tab-active-fg: #050a0e;
+  --panel-tab-inactive-fg: #050a0e99;
+
+  --status-bar-bg: #ff003c;
+  --status-bar-fg: #ffffff;
+
+  --list-hover-bg: #00c2cf;
+  --list-active-bg: #ff003c;
+  --list-active-fg: #ffffff;
+
+  --file-tsx: #050a0e;
+  --file-md: #050a0e;
+  --file-css: #050a0e;
+  --file-json: #050a0e;
 }

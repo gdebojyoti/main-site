@@ -35,6 +35,11 @@
   - package.json
   - RESUME.md
 
+
+## Bugs
+
+1. Pin / close button needs to have styles (similar to VS Code)
+
 ----
 
 # Welcome to React Router!

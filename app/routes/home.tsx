@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
-import VSC from "~/vsc";
+
+export const handle = { fileId: "home" } as const;
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,6 +9,6 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <VSC />;
+export default function HomeRoute() {
+  return null;
 }
