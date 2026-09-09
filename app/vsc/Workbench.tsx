@@ -3,9 +3,12 @@ import ActivityBar from "./ActivityBar";
 import EditorArea from "./editorArea/EditorArea";
 import SideBar from "./SideBar";
 import StatusBar from "./StatusBar";
+import { useVsc } from "./state/VscContext";
 
 const Workbench = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const { isMobile } = useVsc();
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -32,7 +35,7 @@ const Workbench = () => {
       </div>
 
       {/* status bar - branch, error / warning, encoding, line ending, language, etc */}
-      <StatusBar />
+      {!isMobile && <StatusBar />}
     </div>
   );
 };
