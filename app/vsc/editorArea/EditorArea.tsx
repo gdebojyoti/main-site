@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
+
+import { useVsc } from "../state/VscContext";
 import EditorGroup from "./EditorGroup";
 import Panel from "./Panel";
 
 const EditorArea = () => {
-  const [panelOpen, setPanelOpen] = useState(true);
+  const { isMobile } = useVsc();
+
+  const [panelOpen, setPanelOpen] = useState(!isMobile);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {

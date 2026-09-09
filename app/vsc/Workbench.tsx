@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import ActivityBar from "./ActivityBar";
 import EditorArea from "./editorArea/EditorArea";
 import SideBar from "./SideBar";
@@ -6,9 +7,9 @@ import StatusBar from "./StatusBar";
 import { useVsc } from "./state/VscContext";
 
 const Workbench = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-
   const { isMobile } = useVsc();
+
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
