@@ -9,6 +9,7 @@ type VscState = {
 
 type VscContextValue = VscState & {
   activeId: FileId;
+  isMobile: boolean;
   openFile: (id: FileId) => void;
   closeFile: (id: FileId) => void;
   togglePin: (id: FileId) => void;
@@ -26,11 +27,13 @@ function normalizePinned(ids: FileId[]): FileId[] {
 export const VscProvider = ({
   initialPinned,
   activeId,
+  isMobile,
   onNavigate,
   children,
 }: {
   initialPinned: FileId[];
   activeId: FileId;
+  isMobile: boolean;
   onNavigate: (id: FileId, options?: { replace?: boolean }) => void;
   children: ReactNode;
 }) => {
@@ -84,8 +87,8 @@ export const VscProvider = ({
   }, []);
 
   const value = useMemo<VscContextValue>(
-    () => ({ ...state, activeId, openFile, closeFile, togglePin }),
-    [state, activeId, openFile, closeFile, togglePin],
+    () => ({ ...state, activeId, isMobile, openFile, closeFile, togglePin }),
+    [state, activeId, isMobile, openFile, closeFile, togglePin],
   );
 
   return <VscContext.Provider value={value}>{children}</VscContext.Provider>;
