@@ -1,21 +1,21 @@
 ## Requirements
 
-- VS Code look-alike
-- Themes
-- Middle click closes files
-- Option to pin open files; pinned files will re-open on page refresh (use local storage; do consider cookies though - will help with SSR)
-- "Home" will remain pinned by default; unpin will be disabled
-- Right click context menu on file titles -> close, pin
-- Tooltip at bottom right will have a link to "contact" file (check screenshot)
-- Terminal
-  - most commands will return a "currently disabled" error
-  - some commands will have pre-defined results
-    - whoami => ~i am spiderman~ (strikethrough) currently disabled
-      - this will be shown only once
-  - maintain a counter; when it exceeds 10 (for example), show this one word at a time: "YOU NEED TO STOP DOING THIS"
-  - on page refresh, all counters get reset (i.e., no data persistence)
-  - Ctrl + ~ should toggle the terminal
-- "Files"
+- [x] VS Code look-alike
+- [ ] Themes & theme switcher
+- [x] Middle click closes files
+- [x] Option to pin open files; pinned files will re-open on page refresh (use local storage; do consider cookies though - [ ] will help with SSR)
+- [x] "Home" will remain pinned by default; unpin will be disabled
+- [x] Right click context menu on file titles -> close, pin
+- [ ] Tooltip at bottom right will have a link to "contact" file (check screenshot)
+- [ ] Terminal
+  - [x] most commands will return a "currently disabled" error
+  - [ ] some commands will have pre-defined results
+    - [ ] whoami => ~i am spiderman~ (strikethrough) currently disabled
+      - [ ] this will be shown only once
+  - [ ] maintain a counter; when it exceeds 10 (for example), show this one word at a time: "YOU NEED TO STOP DOING THIS"
+  - [ ] on page refresh, all counters get reset (i.e., no data persistence)
+  - [x] Ctrl + ~ should toggle the terminal
+- [x] "Files"
   - Home (tsx)
     - https://web.archive.org/web/20240319211617/https://debojyotighosh.com/
   - Resume (md)
@@ -26,7 +26,7 @@
     - name, version, description
     - scripts - hobbies (lego, video games)
     - dependencies - stack used to create this repo
-- Folder structure
+- [x] Folder structure
   - app
     - routes
       - home.tsx
