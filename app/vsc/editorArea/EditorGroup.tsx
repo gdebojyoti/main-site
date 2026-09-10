@@ -58,7 +58,7 @@ const EditorGroup = () => {
               onMouseDown={handleMouseDown}
               onAuxClick={(event) => handleAuxClick(event, id)}
               onContextMenu={(event) => handleContextMenu(event, id)}
-              className={`flex shrink-0 cursor-pointer items-center gap-2 px-3 py-1.5 text-sm ${
+              className={`flex shrink-0 cursor-pointer items-center gap-2 px-3 py-1.5 text-sm select-none ${
                 isActive
                   ? "rounded-md bg-tab-active text-tab-active-foreground"
                   : "text-tab-inactive-foreground"
