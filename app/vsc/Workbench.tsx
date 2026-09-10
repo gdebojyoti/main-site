@@ -22,6 +22,16 @@ const Workbench = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const onFileNameClick = () => {
+    // do nothing for desktop
+    if (!isMobile) {
+      return;
+    }
+
+    // close sidebar for mobile
+    setSidebarOpen(false);
+  }
+
   return (
     <div className="flex h-full flex-col overflow-x-hidden bg-canvas">
       {/* title bar - SKIP for now */}
@@ -30,8 +40,8 @@ const Workbench = () => {
       <div className="flex min-h-0 min-w-0 flex-1">
         <ActivityBar sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen((open) => !open)} />
         <div className="flex min-h-0 min-w-0 flex-1 gap-1 pt-1 pr-1 pb-2">
-          {sidebarOpen && <SideBar />}
-          <EditorArea />
+          {sidebarOpen && <SideBar onFileNameClick={onFileNameClick} />}
+          <EditorArea sidebarOpen={sidebarOpen} />
         </div>
       </div>
 
