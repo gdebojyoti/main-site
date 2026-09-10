@@ -10,10 +10,12 @@ type MenuState = {
   x: number;
   y: number;
   items: ContextMenuItem[];
+  openUpward?: boolean;
 };
 
 type ContextMenuContextValue = {
   showContextMenu: (event: MouseEvent, items: ContextMenuItem[]) => void;
+  showAnchoredMenu: (event: MouseEvent, items: ContextMenuItem[]) => void;
 };
 
 const ContextMenuContext = createContext<ContextMenuContextValue | null>(null);
@@ -26,6 +28,13 @@ export const ContextMenuProvider = ({ children }: { children: ReactNode }) => {
     event.preventDefault();
     event.stopPropagation();
     setMenu({ x: event.clientX, y: event.clientY, items });
+  }, []);
+
+  const showAnchoredMenu = useCallback((event: MouseEvent, items: ContextMenuItem[]) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    setMenu({ x: rect.right - 5, y: window.innerHeight - rect.top - 40, items, openUpward: true });
   }, []);
 
   const closeMenu = useCallback(() => setMenu(null), []);
@@ -51,13 +60,13 @@ export const ContextMenuProvider = ({ children }: { children: ReactNode }) => {
   }, [menu, closeMenu]);
 
   return (
-    <ContextMenuContext.Provider value={{ showContextMenu }}>
+    <ContextMenuContext.Provider value={{ showContextMenu, showAnchoredMenu }}>
       {children}
       {menu && (
         <ul
           ref={menuRef}
           className="fixed z-50 min-w-56 rounded-lg border border-border bg-background p-1 text-[13px] text-foreground shadow-xl shadow-scrim"
-          style={{ top: menu.y, left: menu.x }}
+          style={menu.openUpward ? { bottom: menu.y, left: menu.x } : { top: menu.y, left: menu.x }}
         >
           {menu.items.map((item) => (
             <li key={item.label}>
