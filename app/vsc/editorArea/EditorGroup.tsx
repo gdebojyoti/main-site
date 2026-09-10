@@ -44,9 +44,9 @@ const EditorGroup = () => {
   };
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-lg border border-border bg-editor">
+    <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden rounded-lg border border-border bg-editor">
       {/* tab bar */}
-      <ul className="flex shrink-0 px-1 pt-1">
+      <ul className="flex shrink-0 overflow-x-auto px-1 pt-1">
         {openIds.map((id) => {
           const file = FILES_BY_ID[id];
           const isActive = id === activeId;
@@ -58,7 +58,7 @@ const EditorGroup = () => {
               onMouseDown={handleMouseDown}
               onAuxClick={(event) => handleAuxClick(event, id)}
               onContextMenu={(event) => handleContextMenu(event, id)}
-              className={`flex cursor-pointer items-center gap-2 px-3 py-1.5 text-sm ${
+              className={`flex shrink-0 cursor-pointer items-center gap-2 px-3 py-1.5 text-sm ${
                 isActive
                   ? "rounded-md bg-tab-active text-tab-active-foreground"
                   : "text-tab-inactive-foreground"
@@ -104,7 +104,7 @@ const EditorGroup = () => {
 
       {/* editor file contents */}
       <div
-        className="min-h-0 flex-1 overflow-y-auto"
+        className="min-h-0 min-w-0 flex-1 overflow-auto"
         onContextMenu={(event) => handleContextMenu(event, activeId)}
       >
         <ActiveContent />
