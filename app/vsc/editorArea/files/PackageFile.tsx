@@ -1,6 +1,6 @@
 const PackageFile = () => {
   return (
-    <pre className="px-8 py-12 font-mono text-sm leading-relaxed text-editor-foreground">
+    <pre className="w-max min-w-full px-8 py-12 font-mono text-sm leading-relaxed text-editor-foreground">
       <code>{`{
   "name": "debojyoti-ghosh",
   "version": "26.9.6",

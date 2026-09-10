@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
+
 import ActivityBar from "./ActivityBar";
 import EditorArea from "./editorArea/EditorArea";
 import SideBar from "./SideBar";
 import StatusBar from "./StatusBar";
+import { useVsc } from "./state/VscContext";
 
 const Workbench = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const { isMobile } = useVsc();
+
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -18,21 +22,31 @@ const Workbench = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  const onFileNameClick = () => {
+    // do nothing for desktop
+    if (!isMobile) {
+      return;
+    }
+
+    // close sidebar for mobile
+    setSidebarOpen(false);
+  }
+
   return (
-    <div className="flex h-full flex-col bg-canvas">
+    <div className="flex h-full flex-col overflow-x-hidden bg-canvas">
       {/* title bar - SKIP for now */}
 
       {/* activity bar (flush) + side bar + editor area (floating, rounded panels) */}
-      <div className="flex min-h-0 flex-1">
+      <div className="flex min-h-0 min-w-0 flex-1">
         <ActivityBar sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen((open) => !open)} />
-        <div className="flex min-h-0 flex-1 gap-1 pt-1 pr-1 pb-2">
-          {sidebarOpen && <SideBar />}
-          <EditorArea />
+        <div className="flex min-h-0 min-w-0 flex-1 gap-1 pt-1 pr-1 pb-2">
+          {sidebarOpen && <SideBar onFileNameClick={onFileNameClick} />}
+          <EditorArea sidebarOpen={sidebarOpen} />
         </div>
       </div>
 
       {/* status bar - branch, error / warning, encoding, line ending, language, etc */}
-      <StatusBar />
+      {!isMobile && <StatusBar />}
     </div>
   );
 };

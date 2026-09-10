@@ -14,7 +14,7 @@ function useRouteFileId(): FileId {
   return HOME_FILE_ID;
 }
 
-const VSC = ({ initialPinned }: { initialPinned: FileId[] }) => {
+const VSC = ({ initialPinned, isMobile }: { initialPinned: FileId[]; isMobile: boolean }) => {
   const activeId = useRouteFileId();
   const navigate = useNavigate();
 
@@ -27,7 +27,12 @@ const VSC = ({ initialPinned }: { initialPinned: FileId[] }) => {
   );
 
   return (
-    <VscProvider initialPinned={initialPinned} activeId={activeId} onNavigate={handleNavigate}>
+    <VscProvider
+      initialPinned={initialPinned}
+      activeId={activeId}
+      isMobile={isMobile}
+      onNavigate={handleNavigate}
+    >
       <ContextMenuProvider>
         <Workbench />
       </ContextMenuProvider>

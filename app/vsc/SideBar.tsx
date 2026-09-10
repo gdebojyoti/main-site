@@ -9,7 +9,7 @@ import { useVsc } from "./state/VscContext";
 const SECTION_HEADING_CLASS =
   "flex items-center gap-1 px-2 py-1 text-[11px] font-bold uppercase tracking-wide text-side-bar-heading-foreground";
 
-const SideBar = () => {
+const SideBar = ({ onFileNameClick }: { onFileNameClick: () => void }) => {
   const { openIds, pinnedIds, activeId, openFile, closeFile, togglePin } = useVsc();
   const { showContextMenu } = useContextMenu();
 
@@ -55,7 +55,7 @@ const SideBar = () => {
             return (
               <li
                 key={id}
-                onClick={() => openFile(id)}
+                onClick={() => { openFile(id); onFileNameClick(); }}
                 onMouseDown={handleMouseDown}
                 onAuxClick={(event) => handleAuxClick(event, id)}
                 onContextMenu={(event) => handleContextMenu(event, id)}
@@ -88,7 +88,7 @@ const SideBar = () => {
             <span>routes</span>
           </li>
           <li
-            onClick={() => openFile("home")}
+            onClick={() => { openFile("home"); onFileNameClick(); }}
             onContextMenu={(event) => handleContextMenu(event, "home")}
             className={treeRowClass("home", "pl-20")}
           >
@@ -100,7 +100,7 @@ const SideBar = () => {
             <span>styles</span>
           </li>
           <li
-            onClick={() => openFile("contact")}
+            onClick={() => { openFile("contact"); onFileNameClick(); }}
             onContextMenu={(event) => handleContextMenu(event, "contact")}
             className={treeRowClass("contact", "pl-20")}
           >
@@ -108,7 +108,7 @@ const SideBar = () => {
             <span>contact.css</span>
           </li>
           <li
-            onClick={() => openFile("package")}
+            onClick={() => { openFile("package"); onFileNameClick(); }}
             onContextMenu={(event) => handleContextMenu(event, "package")}
             className={treeRowClass("package", "pl-8")}
           >
@@ -116,7 +116,7 @@ const SideBar = () => {
             <span>package.json</span>
           </li>
           <li
-            onClick={() => openFile("resume")}
+            onClick={() => { openFile("resume"); onFileNameClick(); }}
             onContextMenu={(event) => handleContextMenu(event, "resume")}
             className={treeRowClass("resume", "pl-8")}
           >
