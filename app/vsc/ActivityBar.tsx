@@ -3,6 +3,7 @@ import { Files, Search, Settings, User } from "lucide-react";
 
 import { useContextMenu } from "./contextMenu/ContextMenuProvider";
 import { buildSettingsMenuItems } from "./contextMenu/settingsMenuItems";
+import { useThemePicker } from "./quickPick/useThemePicker";
 
 const ITEM_CLASS = "flex h-12 w-12 items-center justify-center border-l-2";
 
@@ -14,9 +15,10 @@ const ActivityBar = ({
   onToggleSidebar: () => void;
 }) => {
   const { showAnchoredMenu } = useContextMenu();
+  const openThemePicker = useThemePicker();
 
   const handleSettingsClick = (event: MouseEvent<HTMLButtonElement>) => {
-    showAnchoredMenu(event, buildSettingsMenuItems());
+    showAnchoredMenu(event, buildSettingsMenuItems({ onThemeClick: openThemePicker }));
   };
 
   return (

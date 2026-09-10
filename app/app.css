@@ -56,6 +56,10 @@
   --color-list-active: var(--list-active-bg);
   --color-list-active-foreground: var(--list-active-fg);
 
+  /* quick input (theme picker, and other centered pick lists) */
+  --color-quick-input-focus: var(--quick-input-focus-bg);
+  --color-quick-input-focus-foreground: var(--quick-input-focus-fg);
+
   /* file-type accent colors */
   --color-file-tsx: var(--file-tsx);
   --color-file-md: var(--file-md);
@@ -110,6 +114,9 @@ body {
   --list-active-bg: #d6e4ff;
   --list-active-fg: #0f172a;
 
+  --quick-input-focus-bg: #2563eb;
+  --quick-input-focus-fg: #ffffff;
+
   --file-tsx: #3178c6;
   --file-md: #6b93bf;
   --file-css: #1572b6;
@@ -158,6 +165,9 @@ body {
   --list-active-bg: #37373d;
   --list-active-fg: #ffffff;
 
+  --quick-input-focus-bg: #0078d4;
+  --quick-input-focus-fg: #ffffff;
+
   --file-tsx: #3178c6;
   --file-md: #6b93bf;
   --file-css: #1572b6;
@@ -205,6 +215,9 @@ body {
   --list-hover-bg: #00c2cf;
   --list-active-bg: #ff003c;
   --list-active-fg: #ffffff;
+
+  --quick-input-focus-bg: #ff003c;
+  --quick-input-focus-fg: #ffffff;
 
   --file-tsx: #050a0e;
   --file-md: #050a0e;
