@@ -1,6 +1,6 @@
 const ContactFile = () => {
   return (
-    <pre className="px-8 py-12 font-mono text-sm leading-relaxed text-editor-foreground">
+    <pre className="w-max min-w-full px-8 py-12 font-mono text-sm leading-relaxed text-editor-foreground">
       <code>{`.contact-details {
   --email: "contact[at]debojyotighosh[dot].com";
   --linkedin: "https://www.linkedin.com/in/gdebojyoti/";
