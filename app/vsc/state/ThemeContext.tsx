@@ -1,8 +1,9 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export const THEMES = [
-  { id: "dark", label: "Dark" },
-  { id: "cyberpunk", label: "Cyberpunk" },
+  { id: "dark", label: "Dark", disabled: false },
+  { id: "cyberpunk", label: "Cyberpunk", disabled: false },
+  { id: "destiny", label: "Destiny", disabled: true }
 ] as const;
 
 export type Theme = (typeof THEMES)[number]["id"];

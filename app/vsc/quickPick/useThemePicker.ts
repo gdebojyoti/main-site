@@ -9,9 +9,10 @@ export function useThemePicker() {
   return useCallback(() => {
     showQuickPick(
       THEMES.map((entry) => ({
-        label: entry.label,
+        label: entry.disabled ? `${entry.label} (coming soon)` : entry.label,
         selected: entry.id === theme,
         onSelect: () => setTheme(entry.id),
+        disabled: entry.disabled
       })),
     );
   }, [showQuickPick, theme, setTheme]);

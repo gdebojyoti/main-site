@@ -4,6 +4,7 @@ export type QuickPickItem = {
   label: string;
   onSelect: () => void;
   selected?: boolean;
+  disabled: boolean;
 };
 
 type QuickPickContextValue = {
@@ -59,7 +60,7 @@ export const QuickPickProvider = ({ children }: { children: ReactNode }) => {
                   item.selected
                     ? "bg-quick-input-focus text-quick-input-focus-foreground"
                     : "hover:bg-list-hover hover:ring-1 hover:ring-accent/50 hover:ring-inset focus-visible:bg-list-hover focus-visible:ring-1 focus-visible:ring-accent/50 focus-visible:ring-inset"
-                }`}
+                } ${item.disabled ? "pointer-events-none opacity-60" : ""}`}
               >
                 {item.label}
               </button>
