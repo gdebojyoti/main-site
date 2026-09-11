@@ -3,7 +3,7 @@ import { CircleX, GitBranch, TriangleAlert } from "lucide-react";
 const StatusBar = () => {
   return (
     <div className="flex h-6 shrink-0 items-center justify-between bg-status-bar px-4 pb-1 text-xs text-status-bar-foreground/60">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <span className="flex items-center gap-1">
           <GitBranch size={16} />
           dev
@@ -16,12 +16,9 @@ const StatusBar = () => {
         </span>
       </div>
 
-      <div className="flex items-center gap-3">
-        {/* <span>Ln 1, Col 1</span> */}
-        {/* <span>Spaces: 2</span> */}
+      <div className="flex items-center gap-4">
         <span>UTF-8</span>
         <span>CRLF</span>
-        {/* <span>TypeScript JSX</span> */}
       </div>
     </div>
   );
