@@ -10,10 +10,12 @@ type MenuState = {
   x: number;
   y: number;
   items: ContextMenuItem[];
+  openUpward?: boolean;
 };
 
 type ContextMenuContextValue = {
   showContextMenu: (event: MouseEvent, items: ContextMenuItem[]) => void;
+  showAnchoredMenu: (event: MouseEvent, items: ContextMenuItem[]) => void;
 };
 
 const ContextMenuContext = createContext<ContextMenuContextValue | null>(null);
@@ -26,6 +28,13 @@ export const ContextMenuProvider = ({ children }: { children: ReactNode }) => {
     event.preventDefault();
     event.stopPropagation();
     setMenu({ x: event.clientX, y: event.clientY, items });
+  }, []);
+
+  const showAnchoredMenu = useCallback((event: MouseEvent, items: ContextMenuItem[]) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+    setMenu({ x: rect.right - 5, y: window.innerHeight - rect.top - 40, items, openUpward: true });
   }, []);
 
   const closeMenu = useCallback(() => setMenu(null), []);
@@ -51,13 +60,13 @@ export const ContextMenuProvider = ({ children }: { children: ReactNode }) => {
   }, [menu, closeMenu]);
 
   return (
-    <ContextMenuContext.Provider value={{ showContextMenu }}>
+    <ContextMenuContext.Provider value={{ showContextMenu, showAnchoredMenu }}>
       {children}
       {menu && (
         <ul
           ref={menuRef}
-          className="fixed z-50 min-w-40 rounded-md border border-border bg-side-bar py-1 text-sm text-side-bar-foreground shadow-lg"
-          style={{ top: menu.y, left: menu.x }}
+          className="fixed z-50 min-w-56 rounded-lg border border-border bg-background p-1 text-[13px] text-foreground shadow-xl shadow-scrim"
+          style={menu.openUpward ? { bottom: menu.y, left: menu.x } : { top: menu.y, left: menu.x }}
         >
           {menu.items.map((item) => (
             <li key={item.label}>
@@ -69,7 +78,7 @@ export const ContextMenuProvider = ({ children }: { children: ReactNode }) => {
                   item.onSelect();
                   closeMenu();
                 }}
-                className="flex w-full cursor-pointer px-3 py-1 text-left disabled:cursor-not-allowed disabled:opacity-40 enabled:hover:bg-list-hover"
+                className="flex w-full cursor-pointer items-center rounded-sm px-2.5 py-1.5 text-left outline-none disabled:cursor-default disabled:opacity-40 enabled:hover:bg-list-hover enabled:hover:ring-1 enabled:hover:ring-inset enabled:hover:ring-accent/50 enabled:focus-visible:bg-list-hover enabled:focus-visible:ring-1 enabled:focus-visible:ring-inset enabled:focus-visible:ring-accent/50"
               >
                 {item.label}
               </button>

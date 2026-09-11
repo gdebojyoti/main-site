@@ -13,6 +13,7 @@
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
   --color-canvas: var(--canvas-bg);
+  --color-scrim: var(--scrim);
 
   /* activity bar */
   --color-activity-bar: var(--activity-bar-bg);
@@ -55,6 +56,10 @@
   --color-list-active: var(--list-active-bg);
   --color-list-active-foreground: var(--list-active-fg);
 
+  /* quick input (theme picker, and other centered pick lists) */
+  --color-quick-input-focus: var(--quick-input-focus-bg);
+  --color-quick-input-focus-foreground: var(--quick-input-focus-fg);
+
   /* file-type accent colors */
   --color-file-tsx: var(--file-tsx);
   --color-file-md: var(--file-md);
@@ -75,6 +80,7 @@ body {
   --accent: #2563eb;
   --muted-foreground: #64748b;
   --canvas-bg: #e5e5e5;
+  --scrim: #00000080;
 
   --activity-bar-bg: #2c2c2c;
   --activity-bar-fg: #ffffff;
@@ -108,6 +114,9 @@ body {
   --list-active-bg: #d6e4ff;
   --list-active-fg: #0f172a;
 
+  --quick-input-focus-bg: #2563eb;
+  --quick-input-focus-fg: #ffffff;
+
   --file-tsx: #3178c6;
   --file-md: #6b93bf;
   --file-css: #1572b6;
@@ -122,6 +131,7 @@ body {
   --accent: #0078d4;
   --muted-foreground: #9d9d9d;
   --canvas-bg: #191A1B;
+  --scrim: #00000080;
 
   --activity-bar-bg: #191A1B;
   --activity-bar-fg: #d7d7d7;
@@ -155,6 +165,9 @@ body {
   --list-active-bg: #37373d;
   --list-active-fg: #ffffff;
 
+  --quick-input-focus-bg: #0078d4;
+  --quick-input-focus-fg: #ffffff;
+
   --file-tsx: #3178c6;
   --file-md: #6b93bf;
   --file-css: #1572b6;
@@ -169,6 +182,7 @@ body {
   --accent: #ff003c;
   --muted-foreground: #050a0e99;
   --canvas-bg: #050a0e;
+  --scrim: #00000080;
 
   --activity-bar-bg: #ff003c;
   --activity-bar-fg: #ffffff;
@@ -201,6 +215,9 @@ body {
   --list-hover-bg: #00c2cf;
   --list-active-bg: #ff003c;
   --list-active-fg: #ffffff;
+
+  --quick-input-focus-bg: #ff003c;
+  --quick-input-focus-fg: #ffffff;
 
   --file-tsx: #050a0e;
   --file-md: #050a0e;

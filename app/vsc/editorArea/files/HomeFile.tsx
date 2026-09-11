@@ -1,4 +1,4 @@
-const HIGHLIGHT_CLASS = "bg-editor-highlight px-2 py-1 font-semibold text-editor-highlight-foreground";
+const HIGHLIGHT_CLASS = "bg-editor-highlight p-1 font-semibold text-editor-highlight-foreground";
 const LINK_HIGHLIGHT_CLASS =
   "inline-block bg-accent px-2 py-1 font-semibold text-editor-highlight-foreground no-underline hover:opacity-80";
 
@@ -13,9 +13,9 @@ const HomeFile = () => {
       </p>
 
       <p className="mt-6 leading-relaxed text-editor-foreground">
-        I am a <strong className={HIGHLIGHT_CLASS}>UI/ UX developer</strong> and{" "}
+        I am a <strong className={HIGHLIGHT_CLASS}>UI / UX developer</strong> and{" "}
         <strong className={HIGHLIGHT_CLASS}>front-end engineer</strong>.
-        These cool sounding words mean that I work with React JS, TypeScript, HTML5 and CSS3; and I consider myself to be fairly proficient with them.
+        These cool sounding words mean that I work with NextJS, React, TypeScript, Tailwind CSS & GraphQL; and I consider myself to be fairly proficient with them.
       </p>
 
       <p className="mt-6 leading-relaxed text-editor-foreground">

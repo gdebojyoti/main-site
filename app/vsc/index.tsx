@@ -2,6 +2,8 @@ import { useCallback } from "react";
 import { useMatches, useNavigate } from "react-router";
 import { ContextMenuProvider } from "./contextMenu/ContextMenuProvider";
 import { FILE_ROUTES, HOME_FILE_ID, type FileId } from "./files";
+import { QuickPickProvider } from "./quickPick/QuickPickProvider";
+import { ThemeProvider } from "./state/ThemeContext";
 import { VscProvider } from "./state/VscContext";
 import Workbench from "./Workbench";
 
@@ -27,16 +29,20 @@ const VSC = ({ initialPinned, isMobile }: { initialPinned: FileId[]; isMobile: b
   );
 
   return (
-    <VscProvider
-      initialPinned={initialPinned}
-      activeId={activeId}
-      isMobile={isMobile}
-      onNavigate={handleNavigate}
-    >
-      <ContextMenuProvider>
-        <Workbench />
-      </ContextMenuProvider>
-    </VscProvider>
+    <ThemeProvider>
+      <VscProvider
+        initialPinned={initialPinned}
+        activeId={activeId}
+        isMobile={isMobile}
+        onNavigate={handleNavigate}
+      >
+        <ContextMenuProvider>
+          <QuickPickProvider>
+            <Workbench />
+          </QuickPickProvider>
+        </ContextMenuProvider>
+      </VscProvider>
+    </ThemeProvider>
   );
 };
 
