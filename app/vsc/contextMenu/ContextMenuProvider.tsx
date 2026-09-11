@@ -78,7 +78,7 @@ export const ContextMenuProvider = ({ children }: { children: ReactNode }) => {
                   item.onSelect();
                   closeMenu();
                 }}
-                className="flex w-full cursor-pointer items-center rounded-sm px-2.5 py-1.5 text-left outline-none disabled:cursor-not-allowed disabled:opacity-40 enabled:hover:bg-list-hover enabled:hover:ring-1 enabled:hover:ring-inset enabled:hover:ring-accent/50 enabled:focus-visible:bg-list-hover enabled:focus-visible:ring-1 enabled:focus-visible:ring-inset enabled:focus-visible:ring-accent/50"
+                className="flex w-full cursor-pointer items-center rounded-sm px-2.5 py-1.5 text-left outline-none disabled:cursor-default disabled:opacity-40 enabled:hover:bg-list-hover enabled:hover:ring-1 enabled:hover:ring-inset enabled:hover:ring-accent/50 enabled:focus-visible:bg-list-hover enabled:focus-visible:ring-1 enabled:focus-visible:ring-inset enabled:focus-visible:ring-accent/50"
               >
                 {item.label}
               </button>
