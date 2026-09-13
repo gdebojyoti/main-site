@@ -29,6 +29,7 @@ const Panel = ({ onClose }: { onClose: () => void }) => {
           type="button"
           onClick={onClose}
           className="mr-1 flex h-6 w-6 shrink-0 cursor-pointer items-center justify-center text-muted-foreground"
+          aria-label="Close panel"
         >
           <X className="h-3.5 w-3.5" />
         </button>

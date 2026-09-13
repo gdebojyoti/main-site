@@ -32,19 +32,20 @@ const ActivityBar = ({
               ? "border-activity-bar-active-border text-activity-bar-foreground"
               : "border-transparent"
           }`}
+          aria-label="Explorer"
         >
           <Files className="h-6 w-6" />
         </button>
-        <button type="button" className={`${ITEM_CLASS} border-transparent`}>
+        <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Search">
           <Search className="h-6 w-6" />
         </button>
       </div>
 
       <div className="mt-auto flex flex-col">
-        <button type="button" className={`${ITEM_CLASS} border-transparent`}>
+        <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Account">
           <User className="h-6 w-6" />
         </button>
-        <button type="button" onClick={handleSettingsClick} className={`${ITEM_CLASS} cursor-pointer border-transparent`}>
+        <button type="button" onClick={handleSettingsClick} className={`${ITEM_CLASS} cursor-pointer border-transparent`} aria-label="Settings">
           <Settings className="h-6 w-6" />
         </button>
       </div>
