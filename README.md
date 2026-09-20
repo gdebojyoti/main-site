@@ -12,7 +12,7 @@
   - [ ] some commands will have pre-defined results
     - [ ] whoami => ~i am spiderman~ (strikethrough) currently disabled
       - [ ] this will be shown only once
-  - [ ] maintain a counter; when it exceeds 10 (for example), show this one word at a time: "YOU NEED TO STOP DOING THIS"
+  - [ ] maintain a counter; when it exceeds 10 (for example), do rickroll (line by line). this will happen only once
   - [ ] on page refresh, all counters get reset (i.e., no data persistence)
   - [x] Ctrl + ~ should toggle the terminal
 - [x] "Files"
@@ -34,6 +34,7 @@
       - contact.css
   - package.json
   - RESUME.md
+- [ ] Explorer tree should support expand / collapse behaviour
 
 
 ## Bugs
