@@ -36,15 +36,15 @@ const ActivityBar = ({
         >
           <Files className="h-6 w-6" />
         </button>
-        <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Search">
+        {/* <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Search">
           <Search className="h-6 w-6" />
-        </button>
+        </button> */}
       </div>
 
       <div className="mt-auto flex flex-col">
-        <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Account">
+        {/* <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Account">
           <User className="h-6 w-6" />
-        </button>
+        </button> */}
         <button type="button" onClick={handleSettingsClick} className={`${ITEM_CLASS} cursor-pointer border-transparent`} aria-label="Settings">
           <Settings className="h-6 w-6" />
         </button>
