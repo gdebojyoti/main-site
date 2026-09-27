@@ -3,14 +3,14 @@ import { Fragment, type ReactNode } from "react";
 
 const LINK_CLASS = "inline-flex items-center gap-0.5 text-editor-link hover:underline";
 const CHIP_CLASS =
-  "box-decoration-clone rounded-sm border border-editor-chip-border bg-editor-chip px-1.5 py-0.5 text-editor-chip-foreground";
-const SKILL_CLASS = "rounded-sm bg-editor-highlight px-1.5 py-0.5 text-editor-highlight-foreground";
+  "box-decoration-clone border border-editor-chip-border bg-editor-chip px-1.5 py-0.5 text-editor-chip-foreground";
+const SKILL_CLASS = "bg-editor-highlight px-1.5 py-0.5 text-editor-highlight-foreground";
 
 const DownloadButton = ({ className }: { className?: string }) => (
   <a
     href="/resume.pdf"
     download
-    className={`items-center justify-center gap-2 rounded-sm bg-button px-4 py-2 text-sm font-medium text-button-foreground hover:bg-button-hover ${className ?? ""}`}
+    className={`items-center justify-center gap-2 bg-button px-4 py-2 text-sm font-medium text-button-foreground hover:bg-button-hover ${className ?? ""}`}
   >
     <Download className="h-4 w-4" />
     Download PDF
