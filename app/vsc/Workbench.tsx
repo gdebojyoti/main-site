@@ -49,13 +49,14 @@ const Workbench = () => {
     <div className="flex h-full flex-col overflow-x-hidden bg-canvas">
       {/* title bar - SKIP for now */}
 
-      {/* activity bar (flush) + side bar + editor area (floating, rounded panels) */}
-      <div className="flex min-h-0 min-w-0 flex-1">
-        <ActivityBar sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen((open) => !open)} />
-        <div className="flex min-h-0 min-w-0 flex-1 gap-1 pt-1 pr-1 pb-2">
+      {/* activity bar + side bar + editor area (floating, rounded panels) */}
+      <div className="flex min-h-0 min-w-0 flex-1 gap-1 p-1">
+        <div className="flex min-h-0 min-w-0 overflow-hidden rounded-lg border border-border">
+          <ActivityBar sidebarOpen={sidebarOpen} onToggleSidebar={() => setSidebarOpen((open) => !open)} />
           {sidebarOpen && <SideBar onFileNameClick={onFileNameClick} />}
-          <EditorArea sidebarOpen={sidebarOpen} />
         </div>
+
+        <EditorArea sidebarOpen={sidebarOpen} />
       </div>
 
       {/* status bar - branch, error / warning, encoding, line ending, language, etc */}

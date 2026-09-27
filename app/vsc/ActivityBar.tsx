@@ -5,7 +5,7 @@ import { useContextMenu } from "./contextMenu/ContextMenuProvider";
 import { buildSettingsMenuItems } from "./contextMenu/settingsMenuItems";
 import { useThemePicker } from "./quickPick/useThemePicker";
 
-const ITEM_CLASS = "flex h-12 w-12 items-center justify-center border-l-2";
+const ITEM_CLASS = "flex h-11 w-11 items-center justify-center border-l-2";
 
 const ActivityBar = ({
   sidebarOpen,
@@ -22,7 +22,7 @@ const ActivityBar = ({
   };
 
   return (
-    <div className="flex w-12 shrink-0 flex-col bg-activity-bar text-activity-bar-inactive-foreground">
+    <div className="flex w-11 shrink-0 flex-col bg-activity-bar text-activity-bar-inactive-foreground">
       <div className="flex flex-col">
         <button
           type="button"
@@ -36,15 +36,15 @@ const ActivityBar = ({
         >
           <Files className="h-6 w-6" />
         </button>
-        <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Search">
+        {/* <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Search">
           <Search className="h-6 w-6" />
-        </button>
+        </button> */}
       </div>
 
       <div className="mt-auto flex flex-col">
-        <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Account">
+        {/* <button type="button" className={`${ITEM_CLASS} border-transparent`} aria-label="Account">
           <User className="h-6 w-6" />
-        </button>
+        </button> */}
         <button type="button" onClick={handleSettingsClick} className={`${ITEM_CLASS} cursor-pointer border-transparent`} aria-label="Settings">
           <Settings className="h-6 w-6" />
         </button>

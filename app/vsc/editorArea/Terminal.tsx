@@ -1,4 +1,10 @@
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import {
+  commands,
+  defaultOutput,
+  easterEggOutput,
+  maxInvalidCommandCount,
+} from "../data/terminalCommands";
 
 const PROMPT = "D:\\work\\tcs\\3dp\\reai\\za>";
 
@@ -11,14 +17,19 @@ const PROMPT = "D:\\work\\tcs\\3dp\\reai\\za>";
 // `;
 
 type HistoryEntry = {
-  command: string;
+  command: ReactNode;
   output: ReactNode;
 };
+
+const findCommand = (input: string) =>
+  commands.find((entry) => entry.command === input.toLowerCase());
 
 const Terminal = () => {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [input, setInput] = useState("");
-  const [whoamiRevealed, setWhoamiRevealed] = useState(false);
+  const [revealed, setRevealed] = useState<string[]>([]);
+  const invalidCountRef = useRef(0);
+  const easterEggIndexRef = useRef(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -26,34 +37,69 @@ const Terminal = () => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
   }, [history]);
 
+  // output shown once the invalid command count crosses the threshold; falls back to
+  // `defaultOutput` before that, and again once the easter egg is exhausted
+  const invalidOutput = (command: string) => {
+    invalidCountRef.current += 1;
+
+    // console.log("inside invalidOutput")
+
+    if (
+      invalidCountRef.current > maxInvalidCommandCount &&
+      easterEggIndexRef.current < easterEggOutput.length
+    ) {
+      // console.log("numbers", { commandCount: invalidCountRef.current, eggIndex: easterEggIndexRef.current });
+      const line = easterEggOutput[easterEggIndexRef.current];
+      easterEggIndexRef.current += 1;
+      return line;
+    }
+
+    return defaultOutput(command);
+  };
+
   const runCommand = (raw: string) => {
     const command = raw.trim();
+
+    // empty input only adds a new line
     if (!command) {
       setHistory((h) => [...h, { command: raw, output: null }]);
       return;
     }
 
-    if (command.toLowerCase() === "whoami" && !whoamiRevealed) {
-      setWhoamiRevealed(true);
-      setHistory((h) => [
-        ...h,
-        {
-          command,
-          output: (
-            <span>
-              <span className="line-through">i am spiderman</span> currently disabled
-            </span>
-          ),
-        },
-      ]);
+    const match = findCommand(command);
+
+    if (match?.clearsTerminal) {
+      setHistory([]);
       return;
     }
 
-    setHistory((h) => [...h, { command, output: `'${command}' is currently disabled` }]);
+    // console.log("compute..", match?.result);
+
+    // a command with a result reveals it once, struck through, alongside the default output
+    if (match?.result && !revealed.includes(match.command)) {
+      setRevealed((r) => [...r, match.command]);
+      setHistory((h) => [
+        ...h,
+        {
+          command: <pre>{raw}</pre>,
+          output: match.result,
+        },
+      ]);
+    } else {
+      const output = invalidOutput(command);
+      setHistory((h) => [...h, { command: <pre>{raw}</pre>, output }]);
+    }
   };
 
+  // check for Enter key press
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key !== "Enter") return;
+    // ignore if the key pressed is not Enter
+    if (event.key !== "Enter") {
+      return;
+    }
+
+    // console.log("enter pressed")
+    
     runCommand(input);
     setInput("");
   };
@@ -68,7 +114,7 @@ const Terminal = () => {
 
       {history.map((entry, index) => (
         <div key={index}>
-          <div>
+          <div className="flex items-center gap-1">
             <span className="text-muted-foreground">{PROMPT} </span>
             {entry.command}
           </div>
