@@ -83,7 +83,6 @@ const ResumeFile = () => {
                 <div key={experience.company} className="py-8 last:pb-0">
                   <h3 className="font-semibold text-editor-emphasis">
                     <Marker>###</Marker> {experience.company}
-                    {experience.companyNote && <Marker> {experience.companyNote}</Marker>}
                     <Marker> • </Marker>
                     {experience.role}
                   </h3>
@@ -163,7 +162,6 @@ const ResumeFile = () => {
 
 type Experience = {
   company: string;
-  companyNote?: string;
   role: string;
   date: string;
   location: string;
@@ -260,8 +258,7 @@ const experienceData: Experience[] = [
     ],
   },
   {
-    company: "3dPhy",
-    companyNote: "(acquired by PropTiger)",
+    company: "3dPhy (acquired by PropTiger)",
     role: "Software Engineer",
     date: "September 2015 – July 2016",
     location: "Gurugram, Haryana",
