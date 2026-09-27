@@ -34,6 +34,19 @@
   --color-editor-highlight: var(--editor-highlight-bg);
   --color-editor-highlight-foreground: var(--editor-highlight-fg);
 
+  /* rendered markdown within file content (ResumeFile, etc) */
+  --color-editor-emphasis: var(--editor-emphasis-fg);
+  --color-editor-marker: var(--editor-marker-fg);
+  --color-editor-link: var(--editor-link-fg);
+  --color-editor-chip: var(--editor-chip-bg);
+  --color-editor-chip-foreground: var(--editor-chip-fg);
+  --color-editor-chip-border: var(--editor-chip-border);
+
+  /* buttons */
+  --color-button: var(--button-bg);
+  --color-button-hover: var(--button-hover-bg);
+  --color-button-foreground: var(--button-fg);
+
   /* tabs */
   --color-tab-active: var(--tab-active-bg);
   --color-tab-inactive: var(--tab-inactive-bg);
@@ -95,6 +108,16 @@ body {
   --editor-fg: #0f172a;
   --editor-highlight-bg: #1f2937;
   --editor-highlight-fg: #ffffff;
+  --editor-emphasis-fg: #000000;
+  --editor-marker-fg: #94a3b8;
+  --editor-link-fg: #2563eb;
+  --editor-chip-bg: #f1f5f9;
+  --editor-chip-fg: #0f172a;
+  --editor-chip-border: #cbd5e1;
+
+  --button-bg: #2563eb;
+  --button-hover-bg: #1d4ed8;
+  --button-fg: #ffffff;
 
   --tab-active-bg: #ffffff;
   --tab-inactive-bg: #ececec;
@@ -146,6 +169,16 @@ body {
   --editor-fg: #cccccc;
   --editor-highlight-bg: #333333;
   --editor-highlight-fg: #ffffff;
+  --editor-emphasis-fg: #ffffff;
+  --editor-marker-fg: #6e6e6e;
+  --editor-link-fg: #0078d4;
+  --editor-chip-bg: #1a1b1c;
+  --editor-chip-fg: #cccccc;
+  --editor-chip-border: #3c3c3c;
+
+  --button-bg: #0078d4;
+  --button-hover-bg: #026ec1;
+  --button-fg: #ffffff;
 
   --tab-active-bg: #2d2d2d;
   --tab-inactive-bg: #181818;
