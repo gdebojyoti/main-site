@@ -230,6 +230,16 @@ body {
   --editor-fg: #cccccc;
   --editor-highlight-bg: #333333;
   --editor-highlight-fg: #ffffff;
+  --editor-emphasis-fg: #fdf001;
+  --editor-marker-fg: #ff003c;
+  --editor-link-fg: #d1ee59;
+  --editor-chip-bg: #191620;
+  --editor-chip-fg: #cccccc;
+  --editor-chip-border: #ff003c80;
+
+  --button-bg: #ff003c;
+  --button-hover-bg: #d10032;
+  --button-fg: #ffffff;
 
   --tab-active-bg: #2d2d2d;
   --tab-inactive-bg: #181818;
