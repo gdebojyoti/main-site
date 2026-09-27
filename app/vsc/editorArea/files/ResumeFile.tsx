@@ -6,6 +6,17 @@ const CHIP_CLASS =
   "box-decoration-clone rounded-sm border border-editor-chip-border bg-editor-chip px-1.5 py-0.5 text-editor-chip-foreground";
 const SKILL_CLASS = "rounded-sm bg-editor-highlight px-1.5 py-0.5 text-editor-highlight-foreground";
 
+const DownloadButton = ({ className }: { className?: string }) => (
+  <a
+    href="/resume.pdf"
+    download
+    className={`items-center justify-center gap-2 rounded-sm bg-button px-4 py-2 text-sm font-medium text-button-foreground hover:bg-button-hover ${className ?? ""}`}
+  >
+    <Download className="h-4 w-4" />
+    Download PDF
+  </a>
+);
+
 // muted markdown syntax ("#", "##", "•", "|", etc) rendered alongside the content
 const Marker = ({ children }: { children: ReactNode }) => (
   <span className="font-normal text-editor-marker">{children}</span>
@@ -50,14 +61,7 @@ const ResumeFile = () => {
             </div>
           </div>
 
-          <a
-            href="/resume.pdf"
-            download
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-sm bg-button px-4 py-2 text-sm font-medium text-button-foreground hover:bg-button-hover"
-          >
-            <Download className="h-4 w-4" />
-            Download PDF
-          </a>
+          <DownloadButton className="hidden shrink-0 @xl:inline-flex" />
         </div>
 
         {/* profile */}
@@ -147,6 +151,11 @@ const ResumeFile = () => {
             </section>
           </aside>
         </div>
+      </div>
+
+      {/* mobile CTA; sticky (not fixed) so it stays within the editor and keeps its own space at the end of the content */}
+      <div className="sticky bottom-0 border-t border-border bg-editor px-4 py-3 @xl:hidden">
+        <DownloadButton className="flex w-full" />
       </div>
     </div>
   );
