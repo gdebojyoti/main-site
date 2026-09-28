@@ -1,16 +1,19 @@
-import { ChevronDown, Pin } from "lucide-react";
-import type { MouseEvent } from "react";
+import { ChevronDown, ChevronRight, Pin } from "lucide-react";
+import type { MouseEvent, ReactNode } from "react";
 import { useContextMenu } from "./contextMenu/ContextMenuProvider";
 import { buildFileMenuItems } from "./contextMenu/fileMenuItems";
-import { FILES_BY_ID, type FileId } from "./files";
+import { EXPLORER_TREE, FILES_BY_ID, type ExplorerNode, type FileId } from "./files";
 import { FileTypeIcon } from "./icons";
 import { useVsc } from "./state/VscContext";
 
 const SECTION_HEADING_CLASS =
-  "flex items-center gap-1 px-2 py-1 text-[11px] font-bold uppercase tracking-wide text-side-bar-heading-foreground";
+  "flex w-full items-center gap-1 px-2 py-1 text-left text-[11px] font-bold uppercase tracking-wide text-side-bar-heading-foreground cursor-pointer select-none";
+
+// Tree rows start at 2rem and step in by 1.5rem per level.
+const treeIndent = (depth: number) => ({ paddingLeft: `${2 + depth * 1.5}rem` });
 
 const SideBar = ({ onFileNameClick }: { onFileNameClick: () => void }) => {
-  const { openIds, pinnedIds, activeId, openFile, closeFile, togglePin } = useVsc();
+  const { openIds, pinnedIds, activeId, collapsedIds, toggleCollapsed, openFile, closeFile, togglePin } = useVsc();
   const { showContextMenu } = useContextMenu();
 
   // Middle-click closes a tab, but the browser only follows through on a
@@ -31,10 +34,67 @@ const SideBar = ({ onFileNameClick }: { onFileNameClick: () => void }) => {
     showContextMenu(event, buildFileMenuItems(id, { pinnedIds, closeFile, togglePin }));
   };
 
-  const treeRowClass = (id: FileId, indent: string) =>
-    `flex items-center gap-2 py-0.75 ${indent} pr-2 cursor-pointer ${
+  const isExpanded = (id: string) => !collapsedIds.includes(id);
+
+  const fileRowClass = (id: FileId) =>
+    `flex items-center gap-2 py-0.75 pr-2 cursor-pointer ${
       id === activeId ? "bg-list-active text-list-active-foreground" : "hover:bg-list-hover"
     }`;
+
+  const section = (id: string, title: string, children: ReactNode) => {
+    const expanded = isExpanded(id);
+    const Chevron = expanded ? ChevronDown : ChevronRight;
+    return (
+      <div>
+        <button
+          type="button"
+          onClick={() => toggleCollapsed(id)}
+          aria-expanded={expanded}
+          className={SECTION_HEADING_CLASS}
+        >
+          <Chevron className="h-3.5 w-3.5" />
+          {title}
+        </button>
+        {expanded && children}
+      </div>
+    );
+  };
+
+  const renderTreeNode = (node: ExplorerNode, depth: number): ReactNode => {
+    if (node.kind === "file") {
+      const file = FILES_BY_ID[node.id];
+      return (
+        <li
+          key={node.id}
+          role="treeitem"
+          aria-selected={node.id === activeId}
+          onClick={() => { openFile(node.id); onFileNameClick(); }}
+          onContextMenu={(event) => handleContextMenu(event, node.id)}
+          className={fileRowClass(node.id)}
+          style={treeIndent(depth)}
+        >
+          <FileTypeIcon type={file.type} />
+          <span>{file.label}</span>
+        </li>
+      );
+    }
+
+    const expanded = isExpanded(node.id);
+    const Chevron = expanded ? ChevronDown : ChevronRight;
+    return (
+      <li key={node.id} role="treeitem" aria-expanded={expanded}>
+        <div
+          onClick={() => toggleCollapsed(node.id)}
+          className="flex items-center gap-2 py-0.75 pr-2 cursor-pointer select-none hover:bg-list-hover"
+          style={treeIndent(depth)}
+        >
+          <Chevron className="h-3 w-3 shrink-0 text-muted-foreground" />
+          <span>{node.name}</span>
+        </div>
+        {expanded && <ul role="group">{node.children.map((child) => renderTreeNode(child, depth + 1))}</ul>}
+      </li>
+    );
+  };
 
   return (
     <nav className="flex w-64 shrink-0 flex-col overflow-y-auto border-l border-border bg-side-bar text-side-bar-foreground text-sm">
@@ -44,11 +104,9 @@ const SideBar = ({ onFileNameClick }: { onFileNameClick: () => void }) => {
       </div>
 
       {/* open editors */}
-      <div>
-        <div className={SECTION_HEADING_CLASS}>
-          <ChevronDown className="h-3.5 w-3.5" />
-          Open Editors
-        </div>
+      {section(
+        "section:open-editors",
+        "Open Editors",
         <ul>
           {openIds.map((id) => {
             const file = FILES_BY_ID[id];
@@ -69,62 +127,17 @@ const SideBar = ({ onFileNameClick }: { onFileNameClick: () => void }) => {
               </li>
             );
           })}
-        </ul>
-      </div>
+        </ul>,
+      )}
 
       {/* file / folder structure */}
-      <div>
-        <div className={SECTION_HEADING_CLASS}>
-          <ChevronDown className="h-3.5 w-3.5" />
-          Main-Site
-        </div>
-        <ul>
-          <li className="flex items-center gap-2 py-0.75 pl-8 pr-2 hover:bg-list-hover">
-            <ChevronDown className="h-3 w-3 shrink-0 text-muted-foreground" />
-            <span>app</span>
-          </li>
-          <li className="flex items-center gap-2 py-0.75 pl-14 pr-2 hover:bg-list-hover">
-            <ChevronDown className="h-3 w-3 shrink-0 text-muted-foreground" />
-            <span>routes</span>
-          </li>
-          <li
-            onClick={() => { openFile("home"); onFileNameClick(); }}
-            onContextMenu={(event) => handleContextMenu(event, "home")}
-            className={treeRowClass("home", "pl-20")}
-          >
-            <FileTypeIcon type="tsx" />
-            <span>home.tsx</span>
-          </li>
-          <li className="flex items-center gap-2 py-0.75 pl-14 pr-2 hover:bg-list-hover">
-            <ChevronDown className="h-3 w-3 shrink-0 text-muted-foreground" />
-            <span>styles</span>
-          </li>
-          <li
-            onClick={() => { openFile("contact"); onFileNameClick(); }}
-            onContextMenu={(event) => handleContextMenu(event, "contact")}
-            className={treeRowClass("contact", "pl-20")}
-          >
-            <FileTypeIcon type="css" />
-            <span>contact.css</span>
-          </li>
-          <li
-            onClick={() => { openFile("package"); onFileNameClick(); }}
-            onContextMenu={(event) => handleContextMenu(event, "package")}
-            className={treeRowClass("package", "pl-8")}
-          >
-            <FileTypeIcon type="json" />
-            <span>package.json</span>
-          </li>
-          <li
-            onClick={() => { openFile("resume"); onFileNameClick(); }}
-            onContextMenu={(event) => handleContextMenu(event, "resume")}
-            className={treeRowClass("resume", "pl-8")}
-          >
-            <FileTypeIcon type="md" />
-            <span>RESUME.md</span>
-          </li>
-        </ul>
-      </div>
+      {section(
+        "section:main-site",
+        "Main-Site",
+        <ul role="tree" aria-label="Main-Site">
+          {EXPLORER_TREE.map((node) => renderTreeNode(node, 0))}
+        </ul>,
+      )}
     </nav>
   );
 };

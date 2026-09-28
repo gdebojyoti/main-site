@@ -28,3 +28,23 @@ export const FILE_ROUTES: Record<FileId, string> = {
   package: "/about",
   resume: "/resume",
 };
+
+// Folder structure shown in the explorer. Folder ids are their paths, which
+// keeps them unique and doubles as the key for collapse state.
+export type ExplorerNode =
+  | { kind: "folder"; id: string; name: string; children: ExplorerNode[] }
+  | { kind: "file"; id: FileId };
+
+export const EXPLORER_TREE: ExplorerNode[] = [
+  {
+    kind: "folder",
+    id: "app",
+    name: "app",
+    children: [
+      { kind: "folder", id: "app/routes", name: "routes", children: [{ kind: "file", id: "home" }] },
+      { kind: "folder", id: "app/styles", name: "styles", children: [{ kind: "file", id: "contact" }] },
+    ],
+  },
+  { kind: "file", id: "package" },
+  { kind: "file", id: "resume" },
+];

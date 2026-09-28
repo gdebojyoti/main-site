@@ -1,19 +1,19 @@
 ## Requirements
 
 - [x] VS Code look-alike
-- [ ] Themes & theme switcher
+- [x] Themes & theme switcher
 - [x] Middle click closes files
 - [x] Option to pin open files; pinned files will re-open on page refresh (use local storage; do consider cookies though - [ ] will help with SSR)
 - [x] "Home" will remain pinned by default; unpin will be disabled
 - [x] Right click context menu on file titles -> close, pin
 - [ ] Tooltip at bottom right will have a link to "contact" file (check screenshot)
-- [ ] Terminal
+- [x] Terminal
   - [x] most commands will return a "currently disabled" error
-  - [ ] some commands will have pre-defined results
-    - [ ] whoami => ~i am spiderman~ (strikethrough) currently disabled
-      - [ ] this will be shown only once
-  - [ ] maintain a counter; when it exceeds 10 (for example), do rickroll (line by line). this will happen only once
-  - [ ] on page refresh, all counters get reset (i.e., no data persistence)
+  - [x] some commands will have pre-defined results
+    - [x] whoami => ~i am spiderman~ (strikethrough) currently disabled
+      - [x] this will be shown only once
+  - [x] maintain a counter; when it exceeds 10 (for example), do rickroll (line by line). this will happen only once
+  - [x] on page refresh, all counters get reset (i.e., no data persistence)
   - [x] Ctrl + ~ should toggle the terminal
 - [x] "Files"
   - Home (tsx)
@@ -34,7 +34,7 @@
       - contact.css
   - package.json
   - RESUME.md
-- [ ] Explorer tree should support expand / collapse behaviour
+- [x] Explorer tree should support expand / collapse behaviour
 
 
 ## Bugs
