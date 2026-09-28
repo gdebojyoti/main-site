@@ -1,5 +1,5 @@
 import type { MouseEvent } from "react";
-import { Files, Search, Settings, User } from "lucide-react";
+import { Files, Settings } from "lucide-react";
 
 import { useContextMenu } from "./contextMenu/ContextMenuProvider";
 import { buildSettingsMenuItems } from "./contextMenu/settingsMenuItems";

@@ -223,7 +223,7 @@ const experienceData: Experience[] = [
         content: (
           <>
             Led a team of 2 developers to build a custom checkout flow by collaborating with <strong>RazorPay</strong>.
-            It boosted <strong>conversion by 10%</strong>. Thanks to the "add-ons" on top of that, our{" "}
+            It boosted <strong>conversion by 10%</strong>. Thanks to the &quot;add-ons&quot; on top of that, our{" "}
             <strong>revenue grew by 15%</strong>.
           </>
         ),
