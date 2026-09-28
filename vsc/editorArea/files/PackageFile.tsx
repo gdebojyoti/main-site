@@ -9,10 +9,10 @@ const PackageFile = () => {
     "hobbies": "lego && video-games"
   },
   "dependencies": {
-    "react": "^19.2.6",
-    "react-router": "7.15.0",
-    "tailwindcss": "^4.2.2",
-    "typescript": "^5.9.3"
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }`}</code>
     </pre>
