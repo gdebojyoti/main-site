@@ -70,12 +70,12 @@ const HomeFile = () => {
           .
         </p>
 
-        <div className="grid grid-cols-2 gap-2 @xl:flex @xl:gap-2.5">
+        <div className="flex gap-2 flex-wrap">
           <Link href={FILE_ROUTES.resume} className={COMMAND_CLASS}>
-            <span className="text-editor-marker">$</span> cd ./resume
+            <span className="text-editor-marker">$</span> vsc ./resume
           </Link>
           <Link href={FILE_ROUTES.contact} className={COMMAND_CLASS}>
-            <span className="text-editor-marker">$</span> cd ./contact
+            <span className="text-editor-marker">$</span> vsc ./contact
           </Link>
         </div>
       </div>
