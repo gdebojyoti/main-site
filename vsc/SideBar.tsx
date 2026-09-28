@@ -82,7 +82,7 @@ const SideBar = ({ onFileNameClick }: { onFileNameClick: () => void }) => {
     const expanded = isExpanded(node.id);
     const Chevron = expanded ? ChevronDown : ChevronRight;
     return (
-      <li key={node.id} role="treeitem" aria-expanded={expanded}>
+      <li key={node.id} role="treeitem" aria-expanded={expanded} aria-selected={false}>
         <div
           onClick={() => toggleCollapsed(node.id)}
           className="flex items-center gap-2 py-0.75 pr-2 cursor-pointer select-none hover:bg-list-hover"
