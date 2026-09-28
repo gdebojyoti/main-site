@@ -34,7 +34,7 @@ const HomeFile = () => {
 
         <section>
           <h2 className="text-xs font-semibold tracking-wider text-muted-foreground uppercase">
-            My recent works include
+            My recent works
           </h2>
           <ul className="mt-3 space-y-3">
             {worksData.map((work) => (
@@ -72,10 +72,10 @@ const HomeFile = () => {
 
         <div className="flex gap-2 flex-wrap">
           <Link href={FILE_ROUTES.resume} className={COMMAND_CLASS}>
-            <span className="text-editor-marker">$</span> vsc ./resume
+            <span className="text-editor-marker">$</span> open ./resume
           </Link>
           <Link href={FILE_ROUTES.contact} className={COMMAND_CLASS}>
-            <span className="text-editor-marker">$</span> vsc ./contact
+            <span className="text-editor-marker">$</span> open ./contact
           </Link>
         </div>
       </div>
