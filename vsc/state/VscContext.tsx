@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
 import { FILES, HOME_FILE_ID, type FileId } from "../files";
 import { writePinnedCookie } from "../lib/cookies";
 
@@ -41,17 +41,26 @@ export const VscProvider = ({
   onNavigate: (id: FileId, options?: { replace?: boolean }) => void;
   children: ReactNode;
 }) => {
+  // The active file's tab is included from the start, so the server-rendered
+  // HTML already shows it.
   const [state, setState] = useState<VscState>(() => {
     const pinned = normalizePinned(initialPinned);
-    return { openIds: pinned, pinnedIds: pinned };
+    const openIds = pinned.includes(activeId) ? pinned : [...pinned, activeId];
+    return { openIds, pinnedIds: pinned };
   });
   const [collapsedIds, setCollapsedIds] = useState<string[]>([]);
 
   // Visiting a file's route (a click, a direct URL, back/forward) always
   // opens that file's tab, unless it's already open (e.g. already pinned).
-  useEffect(() => {
-    setState((s) => (s.openIds.includes(activeId) ? s : { ...s, openIds: [...s.openIds, activeId] }));
-  }, [activeId]);
+  // Adjusted during render rather than in an effect, so there's no frame
+  // where the active file has no tab.
+  const [prevActiveId, setPrevActiveId] = useState(activeId);
+  if (activeId !== prevActiveId) {
+    setPrevActiveId(activeId);
+    if (!state.openIds.includes(activeId)) {
+      setState({ ...state, openIds: [...state.openIds, activeId] });
+    }
+  }
 
   const openFile = useCallback(
     (id: FileId) => {
@@ -63,33 +72,32 @@ export const VscProvider = ({
   const closeFile = useCallback(
     (id: FileId) => {
       if (id === HOME_FILE_ID) return;
-      setState((s) => {
-        const openIds = s.openIds.filter((x) => x !== id);
-        const pinnedIds = s.pinnedIds.filter((x) => x !== id);
-        if (pinnedIds.length !== s.pinnedIds.length) writePinnedCookie(pinnedIds);
+      const openIds = state.openIds.filter((x) => x !== id);
+      const pinnedIds = state.pinnedIds.filter((x) => x !== id);
+      setState({ openIds, pinnedIds });
 
-        if (id === activeId) {
-          const closedIndex = s.openIds.indexOf(id);
-          const fallback = openIds[closedIndex - 1] ?? openIds[0] ?? HOME_FILE_ID;
-          onNavigate(fallback, { replace: true });
-        }
-
-        return { openIds, pinnedIds };
-      });
+      // side effects stay outside the state update, which React expects to be pure
+      if (pinnedIds.length !== state.pinnedIds.length) writePinnedCookie(pinnedIds);
+      if (id === activeId) {
+        const closedIndex = state.openIds.indexOf(id);
+        const fallback = openIds[closedIndex - 1] ?? openIds[0] ?? HOME_FILE_ID;
+        onNavigate(fallback, { replace: true });
+      }
     },
-    [activeId, onNavigate],
+    [state, activeId, onNavigate],
   );
 
-  const togglePin = useCallback((id: FileId) => {
-    if (id === HOME_FILE_ID) return;
-    setState((s) => {
-      const isPinned = s.pinnedIds.includes(id);
-      const pinnedIds = isPinned ? s.pinnedIds.filter((x) => x !== id) : [...s.pinnedIds, id];
+  const togglePin = useCallback(
+    (id: FileId) => {
+      if (id === HOME_FILE_ID) return;
+      const isPinned = state.pinnedIds.includes(id);
+      const pinnedIds = isPinned ? state.pinnedIds.filter((x) => x !== id) : [...state.pinnedIds, id];
+      const openIds = state.openIds.includes(id) ? state.openIds : [...state.openIds, id];
+      setState({ openIds, pinnedIds });
       writePinnedCookie(pinnedIds);
-      const openIds = s.openIds.includes(id) ? s.openIds : [...s.openIds, id];
-      return { ...s, pinnedIds, openIds };
-    });
-  }, []);
+    },
+    [state],
+  );
 
   const toggleCollapsed = useCallback((id: string) => {
     setCollapsedIds((ids) => (ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id]));
