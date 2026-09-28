@@ -42,6 +42,11 @@
   --color-editor-chip-foreground: var(--editor-chip-fg);
   --color-editor-chip-border: var(--editor-chip-border);
 
+  /* code-like bits and link cards within file content (HomeFile, etc) */
+  --color-editor-comment: var(--editor-comment-fg);
+  --color-editor-card: var(--editor-card-bg);
+  --color-editor-outline: var(--editor-outline-border);
+
   /* buttons */
   --color-button: var(--button-bg);
   --color-button-hover: var(--button-hover-bg);
@@ -114,6 +119,9 @@ body {
   --editor-chip-bg: #f1f5f9;
   --editor-chip-fg: #0f172a;
   --editor-chip-border: #cbd5e1;
+  --editor-comment-fg: #008000;
+  --editor-card-bg: #f8fafc;
+  --editor-outline-border: #cbd5e1;
 
   --button-bg: #2563eb;
   --button-hover-bg: #1d4ed8;
@@ -171,10 +179,13 @@ body {
   --editor-highlight-fg: #ffffff;
   --editor-emphasis-fg: #ffffff;
   --editor-marker-fg: #6e6e6e;
-  --editor-link-fg: #0078d4;
+  --editor-link-fg: #4daafc;
   --editor-chip-bg: #1a1b1c;
   --editor-chip-fg: #cccccc;
   --editor-chip-border: #3c3c3c;
+  --editor-comment-fg: #6a9955;
+  --editor-card-bg: #191a1b;
+  --editor-outline-border: #333333;
 
   --button-bg: #0078d4;
   --button-hover-bg: #026ec1;
@@ -236,6 +247,9 @@ body {
   --editor-chip-bg: #191620;
   --editor-chip-fg: #cccccc;
   --editor-chip-border: #ff003c80;
+  --editor-comment-fg: #d1ee5980;
+  --editor-card-bg: #191620;
+  --editor-outline-border: #ff003c80;
 
   --button-bg: #ff003c;
   --button-hover-bg: #d10032;
