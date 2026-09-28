@@ -10,7 +10,7 @@ const DownloadButton = ({ className }: { className?: string }) => (
   <a
     href="/resume.pdf"
     download
-    className={`items-center justify-center gap-2 bg-button px-4 py-2 text-sm font-medium text-button-foreground hover:bg-button-hover ${className ?? ""}`}
+    className={`items-center justify-center gap-2 bg-button px-3 py-2 text-sm font-medium text-button-foreground hover:bg-button-hover ${className ?? ""}`}
   >
     <Download className="h-4 w-4" />
     Download PDF

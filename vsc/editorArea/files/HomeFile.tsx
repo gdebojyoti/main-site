@@ -7,8 +7,8 @@ const HIGHLIGHT_CLASS =
   "box-decoration-clone bg-editor-highlight px-1.5 py-0.5 font-semibold text-editor-highlight-foreground";
 const PARAGRAPH_CLASS = "leading-7 @xl:leading-relaxed";
 const LINK_CLASS = "inline-flex items-center gap-0.5 text-editor-link hover:underline";
-const COMMAND_CLASS =
-  "rounded-sm border border-editor-outline px-3 py-3 text-center font-mono text-sm hover:border-accent @xl:py-2";
+// 36px tall (py-1.75 + 1px border around the 20px line)
+const COMMAND_CLASS = "border border-editor-outline px-3 py-1.75 font-mono text-sm hover:border-accent";
 
 const HomeFile = () => {
   return (
@@ -45,7 +45,8 @@ const HomeFile = () => {
                   target="_blank"
                   className="flex flex-wrap items-center gap-x-3.5 gap-y-3 rounded-md border border-border bg-editor-card p-3.5 text-sm hover:border-accent @xl:px-4"
                 >
-                  <span className="bg-accent px-2 py-0.5 font-bold text-editor-highlight-foreground">{work.name}</span>
+                  {/* 36px tall */}
+                  <span className="bg-accent px-3 py-2 font-bold text-editor-highlight-foreground">{work.name}</span>
                   <span className="order-last basis-full text-muted-foreground @xl:order-0 @xl:basis-auto">
                     {work.description}
                   </span>
