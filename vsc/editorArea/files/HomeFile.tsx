@@ -5,7 +5,7 @@ import { FILE_ROUTES } from "../../files";
 // same as the highlights in ResumeFile; cloned decoration keeps the padding on both halves when one wraps
 const HIGHLIGHT_CLASS =
   "box-decoration-clone bg-editor-highlight px-1.5 py-0.5 font-semibold text-editor-highlight-foreground";
-const PARAGRAPH_CLASS = "text-base leading-7 @xl:text-lg @xl:leading-relaxed";
+const PARAGRAPH_CLASS = "leading-7 @xl:leading-relaxed";
 const LINK_CLASS = "inline-flex items-center gap-0.5 text-editor-link hover:underline";
 const COMMAND_CLASS =
   "rounded-sm border border-editor-outline px-3 py-3 text-center font-mono text-sm hover:border-accent @xl:py-2";
@@ -22,15 +22,14 @@ const HomeFile = () => {
 
         <p className={PARAGRAPH_CLASS}>
           I am a <span className={`${HIGHLIGHT_CLASS} whitespace-nowrap`}>UI / UX developer</span> and{" "}
-          <span className={`${HIGHLIGHT_CLASS} whitespace-nowrap`}>front-end engineer</span>. These cool sounding
-          words mean that I work
-          with <strong>NextJS, React, TypeScript, Tailwind CSS & GraphQL</strong>; and I consider myself to be fairly
-          proficient with them.
+          <span className={`${HIGHLIGHT_CLASS} whitespace-nowrap`}>front-end engineer</span>.
+          These cool sounding words mean that I work with <strong>NextJS, React, TypeScript, Tailwind CSS & GraphQL</strong>;
+          and I consider myself to be fairly proficient with them.
         </p>
 
         <p className={PARAGRAPH_CLASS}>
-          During the day, I work as a Front-end Engineer at <strong>Zeplyn AI</strong>. At night, I don my
-          self-designed batsuit and work on web projects that interest me.
+          During the day, I work as a Front-end Engineer at Zeplyn AI.
+          At night, I don my self-designed batsuit and work on web projects that interest me.
         </p>
 
         <section>
