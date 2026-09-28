@@ -10,6 +10,10 @@ type VscState = {
 type VscContextValue = VscState & {
   activeId: FileId;
   isMobile: boolean;
+  // Explorer folders / sections the user has collapsed. Kept here rather than
+  // in SideBar because the sidebar unmounts when hidden.
+  collapsedIds: string[];
+  toggleCollapsed: (id: string) => void;
   openFile: (id: FileId) => void;
   closeFile: (id: FileId) => void;
   togglePin: (id: FileId) => void;
@@ -41,6 +45,7 @@ export const VscProvider = ({
     const pinned = normalizePinned(initialPinned);
     return { openIds: pinned, pinnedIds: pinned };
   });
+  const [collapsedIds, setCollapsedIds] = useState<string[]>([]);
 
   // Visiting a file's route (a click, a direct URL, back/forward) always
   // opens that file's tab, unless it's already open (e.g. already pinned).
@@ -86,9 +91,13 @@ export const VscProvider = ({
     });
   }, []);
 
+  const toggleCollapsed = useCallback((id: string) => {
+    setCollapsedIds((ids) => (ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id]));
+  }, []);
+
   const value = useMemo<VscContextValue>(
-    () => ({ ...state, activeId, isMobile, openFile, closeFile, togglePin }),
-    [state, activeId, isMobile, openFile, closeFile, togglePin],
+    () => ({ ...state, activeId, isMobile, collapsedIds, toggleCollapsed, openFile, closeFile, togglePin }),
+    [state, activeId, isMobile, collapsedIds, toggleCollapsed, openFile, closeFile, togglePin],
   );
 
   return <VscContext.Provider value={value}>{children}</VscContext.Provider>;
