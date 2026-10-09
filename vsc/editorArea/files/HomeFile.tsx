@@ -85,6 +85,11 @@ const HomeFile = () => {
 
 const worksData = [
   {
+    name: "Tactris",
+    description: "a slower, calmer take on Tetris",
+    url: "https://tablehop.games/tactris",
+  },
+  {
     name: "Amusement Park",
     description: "a pure CSS project; with no images",
     url: "https://css-park.debojyotighosh.com/",
