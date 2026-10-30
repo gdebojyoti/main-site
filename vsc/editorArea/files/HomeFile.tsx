@@ -28,8 +28,8 @@ const HomeFile = () => {
         </p>
 
         <p className={PARAGRAPH_CLASS}>
-          During the day, I work as a Front-end Engineer at Zeplyn AI.
-          At night, I don my self-designed batsuit and work on web projects that interest me.
+          I use AI-assisted development - the same tooling that has become standard practice across the software industry - to build and ship products faster than I could do alone.
+          The craft is still mine. The tools just let me do more of it.
         </p>
 
         <section>
@@ -88,6 +88,11 @@ const worksData = [
     name: "Tactris",
     description: "a slower, calmer take on Tetris",
     url: "https://tablehop.games/tactris",
+  },
+  {
+    name: "Wuziqi",
+    description: "occupy 5 in a row to win; 2 player game",
+    url: "https://tablehop.games/wzq",
   },
   {
     name: "Amusement Park",
