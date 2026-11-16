@@ -19,7 +19,7 @@ const PackageFile = () => {
       <code>
         <Bracket level={1}>{"{"}</Bracket>{"\n"}
         {"  "}<Key>name</Key>{": "}<Str>debojyoti-ghosh</Str>{",\n"}
-        {"  "}<Key>version</Key>{": "}<Str>26.9.6</Str>{",\n"}
+        {"  "}<Key>version</Key>{": "}<Str>26.11.16</Str>{",\n"}
         {"  "}<Key>description</Key>{": "}<Str>UI / UX Developer & Front-end Engineer</Str>{",\n"}
         {"  "}<Key>scripts</Key>{": "}<Bracket level={2}>{"{"}</Bracket>{"\n"}
         {"    "}<Key>hobbies</Key>{": "}<Str>lego && video-games</Str>{"\n"}
