@@ -9,12 +9,14 @@ import ContactFile from "./files/ContactFile";
 import HomeFile from "./files/HomeFile";
 import PackageFile from "./files/PackageFile";
 import ResumeFile from "./files/ResumeFile";
+import SponsorFile from "./files/SponsorFile";
 
 const FILE_CONTENT = {
   home: HomeFile,
   resume: ResumeFile,
   contact: ContactFile,
   package: PackageFile,
+  sponsor: SponsorFile,
 };
 
 const EditorGroup = () => {

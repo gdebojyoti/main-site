@@ -1,4 +1,4 @@
-export type FileId = "home" | "resume" | "contact" | "package";
+export type FileId = "home" | "resume" | "contact" | "package" | "sponsor";
 
 export type FileMeta = {
   id: FileId;
@@ -12,6 +12,7 @@ export const FILES: FileMeta[] = [
   { id: "resume", label: "RESUME.md", path: "main-site/RESUME.md", type: "md" },
   { id: "contact", label: "contact.css", path: "main-site/app/styles/contact.css", type: "css" },
   { id: "package", label: "package.json", path: "main-site/package.json", type: "json" },
+  { id: "sponsor", label: "sponsor.md", path: "main-site/sponsor.md", type: "md" },
 ];
 
 export const FILES_BY_ID: Record<FileId, FileMeta> = Object.fromEntries(
@@ -27,6 +28,7 @@ export const FILE_ROUTES: Record<FileId, string> = {
   contact: "/contact",
   package: "/about",
   resume: "/resume",
+  sponsor: "/sponsor",
 };
 
 // Folder structure shown in the explorer. Folder ids are their paths, which
@@ -47,4 +49,5 @@ export const EXPLORER_TREE: ExplorerNode[] = [
   },
   { kind: "file", id: "package" },
   { kind: "file", id: "resume" },
+  { kind: "file", id: "sponsor" },
 ];
