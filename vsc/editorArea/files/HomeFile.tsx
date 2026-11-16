@@ -77,6 +77,9 @@ const HomeFile = () => {
           <Link href={FILE_ROUTES.contact} className={COMMAND_CLASS}>
             <span className="text-editor-marker">$</span> open ./contact
           </Link>
+          <Link href={FILE_ROUTES.sponsor} className={COMMAND_CLASS}>
+            <span className="text-editor-marker">$</span> open ./sponsor
+          </Link>
         </div>
       </div>
     </div>
