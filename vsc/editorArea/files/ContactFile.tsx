@@ -3,6 +3,7 @@ import { Fragment } from "react";
 // null renders an empty line between the groups
 const PROPERTIES: ([name: string, value: string] | null)[] = [
   ["--email", "contact[at]debojyotighosh[dot].com"],
+  null,
   ["--linkedin", "https://www.linkedin.com/in/gdebojyoti/"],
   ["--github", "https://github.com/gdebojyoti/"],
   null,
@@ -24,7 +25,22 @@ const ContactFile = () => {
                 {"  "}
                 <span className="text-syntax-property">{entry[0]}</span>
                 {": "}
-                <span className="text-syntax-string">{`"${entry[1]}"`}</span>
+                <span className="text-syntax-string">
+                  {'"'}
+                  {entry[1].startsWith("http") ? (
+                    <a
+                      href={entry[1]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline"
+                    >
+                      {entry[1]}
+                    </a>
+                  ) : (
+                    entry[1]
+                  )}
+                  {'"'}
+                </span>
                 {";"}
               </>
             )}
