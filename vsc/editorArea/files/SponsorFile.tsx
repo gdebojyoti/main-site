@@ -30,7 +30,7 @@ const SponsorButton = ({ className }: { className?: string }) => (
       <Coffee className="h-4 w-4" />
       Buy me a chai
     </a>
-    <p className="text-xs text-muted-foreground">One-time payment · No subscription</p>
+    <p className="text-xs text-muted-foreground">One-time tip · No subscription</p>
   </div>
 );
 
@@ -51,7 +51,7 @@ const SponsorFile = () => {
               <Marker>#</Marker> Sponsor
             </h1>
             <p className="mt-4">
-              My code compiles on <strong>chai</strong>. If you're a fan of my work, feel free to buy me one. Thanks!
+              My code compiles on <strong>chai</strong>. If you're a fan of my work, feel free to buy me a cup. Thanks!
             </p>
           </div>
 
@@ -78,7 +78,7 @@ const SponsorFile = () => {
         <section className="mt-10">
           <SectionHeading>No chai budget?</SectionHeading>
           <p className="mt-3">
-            That's fine too. Star a repo on{" "}
+            That's fine too. Star one of my repos on{" "}
             <a href="https://github.com/gdebojyoti/" className={LINK_CLASS} target="_blank" rel="noopener noreferrer">
               GitHub <ArrowUpRight className="h-3 w-3" />
             </a>
