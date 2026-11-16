@@ -47,6 +47,15 @@
   --color-editor-card: var(--editor-card-bg);
   --color-editor-outline: var(--editor-outline-border);
 
+  /* syntax highlighting for code shown as file content (ContactFile, PackageFile) */
+  --color-syntax-selector: var(--syntax-selector-fg);
+  --color-syntax-property: var(--syntax-property-fg);
+  --color-syntax-key: var(--syntax-key-fg);
+  --color-syntax-string: var(--syntax-string-fg);
+  --color-syntax-punctuation: var(--syntax-punctuation-fg);
+  --color-syntax-bracket-1: var(--syntax-bracket-1-fg);
+  --color-syntax-bracket-2: var(--syntax-bracket-2-fg);
+
   /* buttons */
   --color-button: var(--button-bg);
   --color-button-hover: var(--button-hover-bg);
@@ -123,6 +132,14 @@ body {
   --editor-card-bg: #f8fafc;
   --editor-outline-border: #cbd5e1;
 
+  --syntax-selector-fg: #800000;
+  --syntax-property-fg: #e50000;
+  --syntax-key-fg: #0451a5;
+  --syntax-string-fg: #a31515;
+  --syntax-punctuation-fg: #0f172a;
+  --syntax-bracket-1-fg: #0431fa;
+  --syntax-bracket-2-fg: #319331;
+
   --button-bg: #2563eb;
   --button-hover-bg: #1d4ed8;
   --button-fg: #ffffff;
@@ -187,6 +204,14 @@ body {
   --editor-card-bg: #191a1b;
   --editor-outline-border: #333333;
 
+  --syntax-selector-fg: #d7ba7d;
+  --syntax-property-fg: #9cdcfe;
+  --syntax-key-fg: #9cdcfe;
+  --syntax-string-fg: #ce9178;
+  --syntax-punctuation-fg: #d4d4d4;
+  --syntax-bracket-1-fg: #d7ba7d;
+  --syntax-bracket-2-fg: #da70d6;
+
   --button-bg: #0078d4;
   --button-hover-bg: #026ec1;
   --button-fg: #ffffff;
@@ -250,6 +275,14 @@ body {
   --editor-comment-fg: #d1ee5980;
   --editor-card-bg: #191620;
   --editor-outline-border: #ff003c80;
+
+  --syntax-selector-fg: #fdf001;
+  --syntax-property-fg: #5ef6ff;
+  --syntax-key-fg: #5ef6ff;
+  --syntax-string-fg: #d1ee59;
+  --syntax-punctuation-fg: #cccccc;
+  --syntax-bracket-1-fg: #fdf001;
+  --syntax-bracket-2-fg: #ff003c;
 
   --button-bg: #ff003c;
   --button-hover-bg: #d10032;
