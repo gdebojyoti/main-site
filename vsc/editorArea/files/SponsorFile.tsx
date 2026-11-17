@@ -56,7 +56,7 @@ const SponsorFile = () => {
         <section className="mt-10">
           <SectionHeading>What does your tip compile to?</SectionHeading>
           <p className="mt-3">
-            Motivation, mostly, and a reminder that someone out there finds this useful.
+            Mostly motivation, and a reminder that someone out there finds this useful.
             And chai, of course!
           </p>
         </section>
