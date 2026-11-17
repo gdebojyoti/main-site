@@ -82,11 +82,7 @@ const SponsorFile = () => {
             <a href="https://github.com/gdebojyoti/" className={LINK_CLASS} target="_blank" rel="noopener noreferrer">
               GitHub <ArrowUpRight className="h-3 w-3" />
             </a>
-            , share something you liked, or say hi via{" "}
-            <Link href={FILE_ROUTES.contact} className={LINK_CLASS}>
-              contact.css
-            </Link>
-            . It all counts.
+            , share something you liked, or just say hi. It all counts.
           </p>
         </section>
 
