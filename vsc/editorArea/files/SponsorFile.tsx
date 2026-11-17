@@ -1,7 +1,5 @@
-import { ArrowUpRight, Coffee } from "lucide-react";
-import Link from "next/link";
 import type { ReactNode } from "react";
-import { FILE_ROUTES } from "../../files";
+import { ArrowUpRight, Coffee } from "lucide-react";
 
 const RAZORPAY_PAGE_URL = "https://pages.razorpay.com/debojyotighosh";
 
@@ -34,12 +32,6 @@ const SponsorButton = ({ className }: { className?: string }) => (
   </div>
 );
 
-const tiers = [
-  { cups: 1, outcome: "one bug fixed (probably)" },
-  { cups: 2, outcome: "one bug fixed, two new ones written" },
-  { cups: 3, outcome: "I finally write those tests" },
-];
-
 const SponsorFile = () => {
   return (
     <div className="@container">
@@ -51,27 +43,30 @@ const SponsorFile = () => {
               <Marker>#</Marker> Sponsor
             </h1>
             <p className="mt-4">
-              My code compiles on <strong>chai</strong>. If you're a fan of my work, feel free to buy me a cup. Thanks!
+              My code compiles on <strong>chai</strong> <span aria-hidden="true">🍵</span>
+              <br />
+              If you're a fan of my work, feel free to buy me a cup. Thanks!
             </p>
           </div>
 
           <SponsorButton className="hidden shrink-0 @xl:flex" />
         </div>
 
-        {/* tiers */}
+        {/* outcome */}
         <section className="mt-10">
-          <SectionHeading>What your chai compiles to</SectionHeading>
-          <ul className="mt-3 space-y-1.5">
-            {tiers.map(({ cups, outcome }) => (
-              <li key={cups}>
-                <Marker>-</Marker> <span aria-hidden="true">{"🍵".repeat(cups)}</span>{" "}
-                <strong>
-                  {cups} chai
-                </strong>
-                : {outcome}
-              </li>
-            ))}
-          </ul>
+          <SectionHeading>What does your tip compile to?</SectionHeading>
+          <p className="mt-3">
+            Motivation, mostly, and a reminder that someone out there finds this useful.
+            And chai, of course!
+          </p>
+        </section>
+
+        {/* amount */}
+        <section className="mt-10">
+          <SectionHeading>How much should I tip?</SectionHeading>
+          <p className="mt-3">
+            Whatever you like. There's no minimum or maximum. ₹10 gets you my gratitude. ₹10,000 gets you my gratitude and some confusion.
+          </p>
         </section>
 
         {/* alternatives */}
@@ -92,7 +87,7 @@ const SponsorFile = () => {
           <p className="mt-3">
             This is a voluntary thank-you, not a donation to a registered charity, so it isn't tax-deductible.
             It also doesn't buy priority support or an SLA.
-            You get my genuine gratitude and a slightly more caffeinated developer.
+            You get my genuine thanks and a slightly more caffeinated developer.
           </p>
         </section>
       </div>
