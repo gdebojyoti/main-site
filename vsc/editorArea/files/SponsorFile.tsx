@@ -45,7 +45,7 @@ const SponsorFile = () => {
             <p className="mt-4">
               My code compiles on <strong>chai</strong> <span aria-hidden="true">🍵</span>
               <br />
-              If you're a fan of my work, feel free to buy me a cup. Thanks!
+              If you&apos;re a fan of my work, feel free to buy me a cup. Thanks!
             </p>
           </div>
 
@@ -65,7 +65,7 @@ const SponsorFile = () => {
         <section className="mt-10">
           <SectionHeading>How much should I tip?</SectionHeading>
           <p className="mt-3">
-            Whatever you like. There's no minimum or maximum. ₹10 gets you my gratitude. ₹10,000 gets you my gratitude and some confusion.
+            Whatever you like. There&apos;s no minimum or maximum. ₹10 gets you my gratitude. ₹10,000 gets you my gratitude and some confusion.
           </p>
         </section>
 
@@ -73,7 +73,7 @@ const SponsorFile = () => {
         <section className="mt-10">
           <SectionHeading>No chai budget?</SectionHeading>
           <p className="mt-3">
-            That's fine too. Star one of my repos on{" "}
+            That&apos;s fine too. Star one of my repos on{" "}
             <a href="https://github.com/gdebojyoti/" className={LINK_CLASS} target="_blank" rel="noopener noreferrer">
               GitHub <ArrowUpRight className="h-3 w-3" />
             </a>
@@ -85,8 +85,8 @@ const SponsorFile = () => {
         <section className="mt-10">
           <SectionHeading>Fine print</SectionHeading>
           <p className="mt-3">
-            This is a voluntary thank-you, not a donation to a registered charity, so it isn't tax-deductible.
-            It also doesn't buy priority support or an SLA.
+            This is a voluntary thank-you, not a donation to a registered charity, so it isn&apos;t tax-deductible.
+            It also doesn&apos;t buy priority support or an SLA.
             You get my genuine thanks and a slightly more caffeinated developer.
           </p>
         </section>
